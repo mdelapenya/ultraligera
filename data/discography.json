@@ -1,0 +1,240 @@
+{
+  "source": "https://itunes.apple.com/lookup?id=1588276787&entity=album",
+  "artistId": "1588276787",
+  "artistName": "Ultraligera",
+  "country": "es",
+  "syncedAt": "2026-05-19T16:32:52.535Z",
+  "releases": [
+    {
+      "slug": "tu-problema-single-2026",
+      "title": "TU PROBLEMA",
+      "year": 2026,
+      "releaseDate": "2026-04-29T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/fe/d2/17/fed217f5-ae74-a557-df1f-8200a674d016/827568003485.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/tu-problema-single/1892056322?uo=4",
+      "trackCount": 1,
+      "appleId": 1892056322
+    },
+    {
+      "slug": "cuando-todo-vaya-mal-single-2026",
+      "title": "Cuando todo vaya mal",
+      "year": 2026,
+      "releaseDate": "2026-03-26T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b5/af/a5/b5afa50e-00d3-0fc4-00f0-7839a1bf0dfd/5026854913926.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/cuando-todo-vaya-mal-single/1885569580?uo=4",
+      "trackCount": 1,
+      "appleId": 1885569580
+    },
+    {
+      "slug": "lapsus-single-2026",
+      "title": "Lapsus",
+      "year": 2026,
+      "releaseDate": "2026-02-27T08:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/3e/1a/48/3e1a4827-b4af-4025-13b0-37d40ef03cc6/5026854701721.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/lapsus-single/1876836469?uo=4",
+      "trackCount": 1,
+      "appleId": 1876836469
+    },
+    {
+      "slug": "pelo-de-foca",
+      "title": "Pelo De Foca",
+      "year": 2025,
+      "releaseDate": "2025-03-07T08:00:00Z",
+      "kind": "album",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/2b/2f/12/2b2f1265-3e23-2187-43cd-444b070f10d4/5021732659200.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/pelo-de-foca/1796256679?uo=4",
+      "trackCount": 12,
+      "appleId": 1796256679
+    },
+    {
+      "slug": "mirame-single-2025",
+      "title": "Mírame",
+      "year": 2025,
+      "releaseDate": "2025-02-07T08:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/1b/dc/4f/1bdc4f61-e6d0-2ae8-8221-709b21bafc7d/5021732620125.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/m%C3%ADrame-single/1790955381?uo=4",
+      "trackCount": 1,
+      "appleId": 1790955381
+    },
+    {
+      "slug": "pelo-de-foca-single-2024",
+      "title": "Pelo De Foca",
+      "year": 2024,
+      "releaseDate": "2024-11-08T08:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c8/72/87/c87287e6-78c8-3144-b4bf-5160b8600cdd/5021732522085.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/pelo-de-foca-single/1773783114?uo=4",
+      "trackCount": 1,
+      "appleId": 1773783114
+    },
+    {
+      "slug": "nunca-nadie-single-2024",
+      "title": "Nunca Nadie",
+      "year": 2024,
+      "releaseDate": "2024-10-18T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/40/17/74/40177402-cd17-8330-5ef4-2f02b25eb798/5021732500076.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/nunca-nadie-single/1770082866?uo=4",
+      "trackCount": 1,
+      "appleId": 1770082866
+    },
+    {
+      "slug": "matanza-en-el-hotel-single-2024",
+      "title": "Matanza En El Hotel",
+      "year": 2024,
+      "releaseDate": "2024-09-27T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/26/2e/0b/262e0b44-f680-57d3-e8ec-6ef1fbd94b01/5021732483089.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/matanza-en-el-hotel-single/1766497544?uo=4",
+      "trackCount": 1,
+      "appleId": 1766497544
+    },
+    {
+      "slug": "el-pueblo-single-2024",
+      "title": "El Pueblo",
+      "year": 2024,
+      "releaseDate": "2024-09-26T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b3/45/0a/b3450a80-626f-0a9d-23af-b62213cece9f/5021732483096.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/el-pueblo-single/1766497820?uo=4",
+      "trackCount": 1,
+      "appleId": 1766497820
+    },
+    {
+      "slug": "silla-de-mimbre-single-2024",
+      "title": "Silla de Mimbre",
+      "year": 2024,
+      "releaseDate": "2024-07-19T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/e8/b7/e9/e8b7e9fb-f102-0e3b-a91f-07b3427fa8d4/5021732419842.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/silla-de-mimbre-single/1753709544?uo=4",
+      "trackCount": 1,
+      "appleId": 1753709544
+    },
+    {
+      "slug": "tu-no-lo-ves-single-2024",
+      "title": "Tú No Lo Ves",
+      "year": 2024,
+      "releaseDate": "2024-06-21T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/5a/f9/4f/5af94f94-2dcb-ec2a-bc82-7acc070125ac/5021732394156.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/t%C3%BA-no-lo-ves-single/1748609370?uo=4",
+      "trackCount": 1,
+      "appleId": 1748609370
+    },
+    {
+      "slug": "la-basura-single-2024",
+      "title": "La Basura",
+      "year": 2024,
+      "releaseDate": "2024-05-10T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/57/e4/aa/57e4aac3-bc1f-d08f-3125-3221ff0fdf19/5021732286338.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/la-basura-single/1741325965?uo=4",
+      "trackCount": 1,
+      "appleId": 1741325965
+    },
+    {
+      "slug": "europa",
+      "title": "Europa",
+      "year": 2023,
+      "releaseDate": "2023-12-08T08:00:00Z",
+      "kind": "ep",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/75/f8/f4/75f8f437-6e1f-0d37-ef65-7fc2ffe6adc6/5021732378088.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/europa-ep/1745564859?uo=4",
+      "trackCount": 6,
+      "appleId": 1745564859
+    },
+    {
+      "slug": "europa-single-2023",
+      "title": "Europa",
+      "year": 2023,
+      "releaseDate": "2023-05-26T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c2/3d/0f/c23d0fac-8625-0f46-7ae5-6ad14395b6de/5021732378019.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/europa-single/1745564281?uo=4",
+      "trackCount": 1,
+      "appleId": 1745564281
+    },
+    {
+      "slug": "amor-amor-single-2023",
+      "title": "Amor Amor",
+      "year": 2023,
+      "releaseDate": "2023-04-14T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/96/5c/3d/965c3d40-4672-0d5d-0c52-a3cbfbdee0c9/5021732377999.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/amor-amor-single/1745563029?uo=4",
+      "trackCount": 1,
+      "appleId": 1745563029
+    },
+    {
+      "slug": "mala-mania-single-2022",
+      "title": "Mala Manía",
+      "year": 2022,
+      "releaseDate": "2022-10-06T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/4e/43/50/4e435008-f2ce-b54b-6e8e-da00b6301612/5021732378026.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/mala-man%C3%ADa-single/1745564471?uo=4",
+      "trackCount": 1,
+      "appleId": 1745564471
+    },
+    {
+      "slug": "europa-single-2022",
+      "title": "Europa",
+      "year": 2022,
+      "releaseDate": "2022-05-19T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/38/cd/18/38cd187b-5b67-e928-4058-c9ad25ad1427/5021732378002.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/europa-single/1745564704?uo=4",
+      "trackCount": 1,
+      "appleId": 1745564704
+    },
+    {
+      "slug": "si-tu-supieras-single-2022",
+      "title": "Si Tú Supieras",
+      "year": 2022,
+      "releaseDate": "2022-03-31T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/d3/eb/3b/d3eb3b04-82cd-93e0-d137-8021eb963f2c/5021732378033.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/si-t%C3%BA-supieras-single/1745563111?uo=4",
+      "trackCount": 1,
+      "appleId": 1745563111
+    },
+    {
+      "slug": "recuerdos-del-baile-single-2022",
+      "title": "Recuerdos del Baile",
+      "year": 2022,
+      "releaseDate": "2022-02-14T08:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ab/14/65/ab1465ba-e237-563e-abfd-7011f7cd1d31/5021732378040.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/recuerdos-del-baile-single/1745563809?uo=4",
+      "trackCount": 1,
+      "appleId": 1745563809
+    },
+    {
+      "slug": "hasta-el-fondo-single-2021",
+      "title": "Hasta el Fondo",
+      "year": 2021,
+      "releaseDate": "2021-12-10T08:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/4a/f7/2c/4af72c58-7bb5-d751-ea33-21abc1c771f3/5021732378057.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/hasta-el-fondo-single/1745563020?uo=4",
+      "trackCount": 1,
+      "appleId": 1745563020
+    },
+    {
+      "slug": "m-a-de-fiesta-single-2021",
+      "title": "M****a de Fiesta",
+      "year": 2021,
+      "releaseDate": "2021-10-15T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/0f/98/73/0f9873fb-5eca-e909-adef-54a70a6f45df/5021732378064.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/m-a-de-fiesta-single/1745564710?uo=4",
+      "trackCount": 1,
+      "appleId": 1745564710
+    }
+  ]
+}

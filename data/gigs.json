@@ -1,0 +1,193 @@
+{
+  "$schema": "./gigs.schema.json",
+  "source": "https://www.ultraligera.com/tour",
+  "syncedAt": "2026-05-19T14:40:36.111Z",
+  "gigs": [
+    {
+      "rawDate": "2026-05-16",
+      "date": "16.5.26",
+      "venue": "Festival Soplo de Letras",
+      "ticketUrl": "https://tickety.es/event/festival-soplo-de-letras-2026-la-laguna-tenerife"
+    },
+    {
+      "rawDate": "2026-05-23",
+      "date": "23.5.26",
+      "venue": "Almazán Ven Vive Vuelve",
+      "ticketUrl": "https://woutick.com/es/entradas/almazan-ven-vive-vuelve-edicion-primavera-2026?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGn-Vsp4yNvPd361vRTBMi8fRV-HRVglnQqUvT5SpjS1Ey58lBZF8JKc80wotk_aem_XtZmxg-L0tm0AwlMWLyhmQ"
+    },
+    {
+      "rawDate": "2026-05-30",
+      "date": "30.5.26",
+      "venue": "Spring Festival",
+      "ticketUrl": "https://springalicante.es/abonos/"
+    },
+    {
+      "rawDate": "2026-06-12",
+      "date": "12.6.26",
+      "venue": "Mallorca Live Festival",
+      "ticketUrl": "https://mallorcalivefestival.com"
+    },
+    {
+      "rawDate": "2026-06-13",
+      "date": "13.6.26",
+      "venue": "Festival de los Sentidos",
+      "ticketUrl": "https://www.festivalsentidos.com/entradas"
+    },
+    {
+      "rawDate": "2026-06-19",
+      "date": "19.6.26",
+      "venue": "León Solo Música",
+      "ticketUrl": "https://leonsolomusica.com/san-juan-2026/?fbclid=PAZnRzaARS5GBleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafdj4U94CjB64xrh9Q1DcGNnq7NewOSICgfvdHEEEUURtEZEVdJdRHEtD0wfw_aem_Cs77J-NLpyEueG4zJWD9ew"
+    },
+    {
+      "rawDate": "2026-06-20",
+      "date": "20.6.26",
+      "venue": "Festival Indie",
+      "ticketUrl": "https://baila.fm/eventos/festival-indie-arena-viva-ciudad-real-2026/?fbclid=PAZnRzaAQoxv5leHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAacSvdz-qE_UsHU2af3S65ghi3QjLXg9c8ak-muB7IQscJgYYi_hf0TzarZ6Iw_aem_nKT0duhnyZRWvRhnpMMYGg"
+    },
+    {
+      "rawDate": "2026-06-27",
+      "date": "27.6.26",
+      "venue": "La Bodega Live",
+      "ticketUrl": "https://www.labodegalive.com/entradas"
+    },
+    {
+      "rawDate": "2026-07-03",
+      "date": "3.7.26",
+      "venue": "Festival Río Babel",
+      "ticketUrl": "https://festivalriobabel.com/2026/entradas/?_gl=1*mygsq6*_up*MQ..*_ga*NzU4MjM0MzMyLjE3NjU4ODE0Mjg.*_ga_YXMXDGJF6L*czE3NjU4ODE0MjckbzEkZzEkdDE3NjU4ODE0MjckajYwJGwwJGgw&cp_landing_source=festivalriobabel&utm_source=google&utm_medium=organic"
+    },
+    {
+      "rawDate": "2026-07-04",
+      "date": "4.7.26",
+      "venue": "Polifonik Sound",
+      "ticketUrl": "https://polifoniksound.com/entradas/"
+    },
+    {
+      "rawDate": "2026-07-10",
+      "date": "10.7.26",
+      "venue": "Festival Cruïlla",
+      "ticketUrl": "https://www.cruillabarcelona.com/es/tickets/"
+    },
+    {
+      "rawDate": "2026-07-11",
+      "date": "11.7.26",
+      "venue": "Conciertos Viveros",
+      "ticketUrl": "https://conciertosdeviverosvlc.com/portfolio/ultraligera/#entrada"
+    },
+    {
+      "rawDate": "2026-07-16",
+      "date": "16.7.26",
+      "venue": "FIB",
+      "ticketUrl": "https://fiberfib.com/?utm_source=google&utm_medium=cpc&utm_content=image&utm_campaign=fib_2025_sale_pmax_traffic&utm_source_platform=pmax&utm_creative_format=display&utm_marketing_tactic=prospecting&gad_source=1&gad_campaignid=23716617251&gbraid=0AAAAAqxijZlzTTBlfGrzasJun8qB-J7L5&gclid=CjwKCAjwnN3OBhA8EiwAfpTYetALDfT_hnA70tdo2k1hgrZmu4pxW5ZaeqKd_MlQ1KotYA4NQuu-pRoCHIEQAvD_BwE"
+    },
+    {
+      "rawDate": "2026-07-17",
+      "date": "17.7.26",
+      "venue": "Festival Sonórica",
+      "ticketUrl": "https://www.sonorica.es"
+    },
+    {
+      "rawDate": "2026-07-30",
+      "date": "30.7 – 1.8.26",
+      "venue": "SonRías Baixas",
+      "ticketUrl": "https://www.sonriasbaixas.info/pages/entradas"
+    },
+    {
+      "rawDate": "2026-07-31",
+      "date": "31.7 – 2.8.26",
+      "venue": "Low Festival",
+      "ticketUrl": "https://www.enterticket.es/eventos/low-festival-2026-torrevieja-479352"
+    },
+    {
+      "rawDate": "2026-08-05",
+      "date": "5.8.26",
+      "venue": "Concert Music Festival",
+      "ticketUrl": "https://www.ticketmaster.es/event/782422332?subchannel_id=11800&brand=es_concertmusicfest&_gl=1*1sh2run*_gcl_au*MTgyNDExOTE3My4xNzY1MzczMTE0"
+    },
+    {
+      "rawDate": "2026-08-13",
+      "date": "13 – 15.8.26",
+      "venue": "Festival Mediterránea",
+      "ticketUrl": "https://www.ticketvip.es/evento-entradas-festival-mediterranea-gandia-2026"
+    },
+    {
+      "rawDate": "2026-08-18",
+      "date": "18.8.26",
+      "venue": "Luna Sur",
+      "ticketUrl": "https://marenostrumfuengirola.com/eventos/luna-sur-tardeo/"
+    },
+    {
+      "rawDate": "2026-08-20",
+      "date": "20 – 23.8.26",
+      "venue": "Cooltural Fest",
+      "ticketUrl": "https://coolturalfest.com/venta-de-abonos/"
+    },
+    {
+      "rawDate": "2026-08-27",
+      "date": "27 – 29.8.26",
+      "venue": "Festival Gigante",
+      "ticketUrl": "https://festivalgigante.com/abonos/"
+    },
+    {
+      "rawDate": "2026-08-28",
+      "date": "28 – 30.8.26",
+      "venue": "Festival Cosquín Rock",
+      "ticketUrl": "https://www.edenentradas.ar/event/cosquin-rock-2027-wh"
+    },
+    {
+      "rawDate": "2026-08-29",
+      "date": "29.8.26",
+      "venue": "Indispensables Cuenca",
+      "ticketUrl": "https://www.ticketvip.es/evento-entradas-festival-indispensables-cuenca-2026",
+      "freeEntry": true
+    },
+    {
+      "rawDate": "2026-09-04",
+      "date": "4 – 5.9.26",
+      "venue": "Vive Latino",
+      "ticketUrl": "https://vivelatino.es"
+    },
+    {
+      "rawDate": "2026-09-11",
+      "date": "11.9.26",
+      "venue": "POP CAAC",
+      "ticketUrl": "https://crashmusic.es/festivales/popcaac/"
+    },
+    {
+      "rawDate": "2026-09-12",
+      "date": "12.9.26",
+      "venue": "Granada Sound",
+      "ticketUrl": "https://granadasound.com/abonos/"
+    },
+    {
+      "rawDate": "2026-09-18",
+      "date": "18.9.26",
+      "venue": "Arrecife en Vivo"
+    },
+    {
+      "rawDate": "2026-09-19",
+      "date": "19.9.26",
+      "venue": "Caudal Fest",
+      "ticketUrl": "https://www.caudalfest.es/entradas/"
+    },
+    {
+      "rawDate": "2026-09-25",
+      "date": "25.9.26",
+      "venue": "Sin Frontera",
+      "ticketUrl": "https://www.entradas.com/artist/sin-frontera/?affiliate=L1M"
+    },
+    {
+      "rawDate": "2026-10-09",
+      "date": "9.10.26",
+      "venue": "ROCK@RENA FESTIVAL",
+      "ticketUrl": "https://landing.vivaticket.es/ultraligera/26/pamplona-6911beab/"
+    },
+    {
+      "rawDate": "2026-10-17",
+      "date": "17.10.26",
+      "venue": "ContemPOPranea",
+      "ticketUrl": "https://contempopranea.com/tickets/"
+    }
+  ]
+}
