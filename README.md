@@ -20,7 +20,6 @@ app/
     musica/                # discografía
     tour/                  # gira (lee data/gigs.json)
     media/                 # enlaces a vídeos del canal oficial
-    galeria/               # placeholders (espera fotos de fans)
     contacto/              # canales oficiales para contactar a la banda
     aviso-legal/           # disclaimer + datos personales + takedown
 components/                # Header, Footer, Marquee, NewsletterForm
@@ -147,7 +146,5 @@ nombre como **Project Name** en Vercel al importar.
   solo simula el envío.
 - **Reemplazar las portadas de discos placeholder** por las artworks reales con
   permiso del titular.
-- **Galería**: reemplazar gradientes por fotos contribuidas por fans (con
-  consentimiento del autor).
 - **Spotify embed**: cambiar el botón externo por el `iframe` del reproductor
   cuando se decida qué track destacar.

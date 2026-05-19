@@ -133,14 +133,13 @@ export const VIDEOS_SYNCED_AT: string | null = videosData.syncedAt ?? null;
 export const VIDEOS_CHANNEL_TITLE: string | null = videosData.channelTitle ?? null;
 
 export type NavItem = { href: string; labelKey: NavKey };
-export type NavKey = "tour" | "music" | "band" | "media" | "gallery" | "contact" | "shop";
+export type NavKey = "tour" | "music" | "band" | "media" | "contact" | "shop";
 
 export const NAV: NavItem[] = [
   { href: "/tour", labelKey: "tour" },
   { href: "/musica", labelKey: "music" },
   { href: "/banda", labelKey: "band" },
   { href: "/media", labelKey: "media" },
-  { href: "/galeria", labelKey: "gallery" },
 ];
 
 /**
