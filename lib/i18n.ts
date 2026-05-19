@@ -12,7 +12,6 @@ type Dict = {
     music: string;
     band: string;
     media: string;
-    gallery: string;
     contact: string;
     shop: string;
   };
@@ -78,10 +77,6 @@ type Dict = {
     noShorts: string;
     likesHidden: string;
   };
-  gallery: {
-    title: string;
-    subtitle: string;
-  };
   contact: {
     title: string;
     subtitle: string;
@@ -135,7 +130,6 @@ const es: Dict = {
     music: "Música",
     band: "Banda",
     media: "Media",
-    gallery: "Galería",
     contact: "Contacto",
     shop: "Tienda",
   },
@@ -210,10 +204,6 @@ const es: Dict = {
     noShorts: "Sin Shorts publicados por ahora.",
     likesHidden: "likes ocultos",
   },
-  gallery: {
-    title: "Galería",
-    subtitle: "Espacio reservado para fotos compartidas por fans (con permiso de quien las tome).",
-  },
   contact: {
     title: "Contacto",
     subtitle: "Esta web es un proyecto de fan. Aquí no se gestionan ni la banda ni su agenda.",
@@ -266,7 +256,6 @@ const en: Dict = {
     music: "Music",
     band: "Band",
     media: "Media",
-    gallery: "Gallery",
     contact: "Contact",
     shop: "Shop",
   },
@@ -340,10 +329,6 @@ const en: Dict = {
     noVideos: "No data yet. The site auto-syncs nightly with the YouTube channel.",
     noShorts: "No Shorts published yet.",
     likesHidden: "likes hidden",
-  },
-  gallery: {
-    title: "Gallery",
-    subtitle: "Space reserved for fan-shared photos (with the photographer's permission).",
   },
   contact: {
     title: "Contact",

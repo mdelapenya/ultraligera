@@ -67,12 +67,6 @@ export function buildSearchIndex(locale: Locale): SearchItem[] {
           ? ["media", "videos", "shorts", "videoclips", "youtube"]
           : ["media", "videos", "shorts", "youtube"],
     },
-    {
-      href: "/galeria",
-      title: d.nav.gallery,
-      subtitle: d.gallery.title,
-      aliases: locale === "es" ? ["galeria", "fotos", "photo"] : ["gallery", "photos", "photo"],
-    },
   ];
   for (const p of pageEntries) {
     items.push({
