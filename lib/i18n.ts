@@ -67,6 +67,7 @@ type Dict = {
     typeVideos: string;
     typeShorts: string;
     typeTrending: string;
+    typeFeatured: string;
     sortByViews: string;
     sortByLikes: string;
     sortByDate: string;
@@ -76,6 +77,7 @@ type Dict = {
     dataSource: string;
     noVideos: string;
     noShorts: string;
+    noFeatured: string;
     likesHidden: string;
     trendingSubtitle: string;
     channelTotalLabel: string;
@@ -83,6 +85,9 @@ type Dict = {
     topVideosLabel: string;
     topVideosSubtitle: string;
     notEnoughHistory: string;
+    featuredAuthorBy: string;
+    videoSelectorMore: string;
+    videoSelectorHide: string;
   };
   contact: {
     title: string;
@@ -200,6 +205,7 @@ const es: Dict = {
     typeVideos: "Vídeos",
     typeShorts: "Shorts",
     typeTrending: "Trending",
+    typeFeatured: "Destacados",
     sortByViews: "Más vistos",
     sortByLikes: "Más likes",
     sortByDate: "Más recientes",
@@ -210,14 +216,18 @@ const es: Dict = {
       "Reproducciones, likes, thumbnails y duración obtenidos del canal oficial de YouTube vía YouTube Data API. Los vídeos se reproducen en youtube.com; este sitio no aloja ni audio ni vídeo.",
     noVideos: "Aún no hay datos. El sitio se sincroniza automáticamente cada noche con el canal de YouTube.",
     noShorts: "Sin Shorts publicados por ahora.",
+    noFeatured: "Aún no hay vídeos destacados.",
     likesHidden: "likes ocultos",
     trendingSubtitle:
       "Visualizaciones acumuladas día a día. Snapshot diario tras cada sync nocturno.",
     channelTotalLabel: "Total del canal",
     channelTotalSubtitle: "Suma de reproducciones de todos los vídeos",
-    topVideosLabel: "Top vídeos",
-    topVideosSubtitle: "Cinco vídeos más vistos del canal",
+    topVideosLabel: "Vídeos comparados",
+    topVideosSubtitle: "Pincha abajo para añadir o quitar vídeos del gráfico.",
     notEnoughHistory: "Aún no hay suficiente histórico — vuelve mañana.",
+    featuredAuthorBy: "por",
+    videoSelectorMore: "más",
+    videoSelectorHide: "Ocultar",
   },
   contact: {
     title: "Contacto",
@@ -334,6 +344,7 @@ const en: Dict = {
     typeVideos: "Videos",
     typeShorts: "Shorts",
     typeTrending: "Trending",
+    typeFeatured: "Featured",
     sortByViews: "Most viewed",
     sortByLikes: "Most liked",
     sortByDate: "Newest",
@@ -344,13 +355,17 @@ const en: Dict = {
       "View counts, likes, thumbnails and duration sourced from the band's official YouTube channel via the YouTube Data API. Videos play on youtube.com; this site does not host any audio or video.",
     noVideos: "No data yet. The site auto-syncs nightly with the YouTube channel.",
     noShorts: "No Shorts published yet.",
+    noFeatured: "No featured videos yet.",
     likesHidden: "likes hidden",
     trendingSubtitle: "Cumulative daily views. Daily snapshot taken after each nightly sync.",
     channelTotalLabel: "Channel total",
     channelTotalSubtitle: "Sum of plays across every video",
-    topVideosLabel: "Top videos",
-    topVideosSubtitle: "Five most-watched videos on the channel",
+    topVideosLabel: "Compared videos",
+    topVideosSubtitle: "Click below to add or remove videos from the chart.",
     notEnoughHistory: "Not enough history yet — check back tomorrow.",
+    featuredAuthorBy: "by",
+    videoSelectorMore: "more",
+    videoSelectorHide: "Hide",
   },
   contact: {
     title: "Contact",
