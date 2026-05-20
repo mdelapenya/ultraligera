@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
-import { SITE } from "@/lib/content";
+import { BAND, SITE } from "@/lib/content";
 import { buildAlternates } from "@/lib/seo";
+import { breadcrumbsSchema } from "@/lib/schema";
+import { JsonLd } from "@/components/JsonLd";
 
 export async function generateMetadata({
   params,
@@ -29,7 +31,14 @@ export default async function LegalPage({
   const d = getDict(l);
 
   return (
-    <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+    <>
+      <JsonLd
+        data={breadcrumbsSchema(l, [
+          { name: BAND.name, path: "" },
+          { name: d.footer.legal, path: "/aviso-legal" },
+        ])}
+      />
+      <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
       <header className="mb-12">
         <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--accent)] mb-4">
           {d.home.eyebrow}
@@ -97,6 +106,7 @@ export default async function LegalPage({
             : "Information (tour dates, awards, releases) is gathered from public sources and may contain errors or omissions. For official data, please refer to the band's official channels."}
         </p>
       </div>
-    </article>
+      </article>
+    </>
   );
 }

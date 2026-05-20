@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
-import { MEMBERS } from "@/lib/content";
+import { BAND, MEMBERS } from "@/lib/content";
 import { buildAlternates } from "@/lib/seo";
+import { breadcrumbsSchema, musicGroupSchema } from "@/lib/schema";
+import { JsonLd } from "@/components/JsonLd";
 
 export async function generateMetadata({
   params,
@@ -29,7 +31,15 @@ export default async function BandPage({
   const d = getDict(l);
 
   return (
-    <article className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+    <>
+      <JsonLd data={musicGroupSchema()} />
+      <JsonLd
+        data={breadcrumbsSchema(l, [
+          { name: BAND.name, path: "" },
+          { name: d.band.title, path: "/banda" },
+        ])}
+      />
+      <article className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
       <header className="mb-16 md:mb-24">
         <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--accent)] mb-4">
           {l === "es" ? "Quiénes son" : "Who they are"}
@@ -110,6 +120,7 @@ export default async function BandPage({
           </p>
         </div>
       </section>
-    </article>
+      </article>
+    </>
   );
 }

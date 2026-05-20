@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
 import { GIGS, RELEASES, SOCIAL } from "@/lib/content";
 import { buildAlternates } from "@/lib/seo";
+import { musicGroupSchema, websiteSchema } from "@/lib/schema";
+import { JsonLd } from "@/components/JsonLd";
 import { Marquee } from "@/components/Marquee";
 
 export async function generateMetadata({
@@ -35,6 +37,8 @@ export default async function Home({
 
   return (
     <>
+      <JsonLd data={websiteSchema()} />
+      <JsonLd data={musicGroupSchema()} />
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-16 md:pt-32 md:pb-24">

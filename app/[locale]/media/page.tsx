@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
 import {
+  BAND,
   SOCIAL,
   VIDEOS,
   VIDEOS_SYNCED_AT,
@@ -9,6 +10,8 @@ import {
   FEATURED_VIDEOS,
 } from "@/lib/content";
 import { buildAlternates } from "@/lib/seo";
+import { breadcrumbsSchema } from "@/lib/schema";
+import { JsonLd } from "@/components/JsonLd";
 import { VideoGrid } from "@/components/VideoGrid";
 
 export async function generateMetadata({
@@ -45,7 +48,14 @@ export default async function MediaPage({
     : null;
 
   return (
-    <article className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+    <>
+      <JsonLd
+        data={breadcrumbsSchema(l, [
+          { name: BAND.name, path: "" },
+          { name: d.media.title, path: "/media" },
+        ])}
+      />
+      <article className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
       <header className="mb-12 md:mb-16 max-w-4xl">
         <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--accent)] mb-4">
           {l === "es" ? "Canal de YouTube" : "YouTube channel"}
@@ -106,6 +116,7 @@ export default async function MediaPage({
             : "Videos link to the band's official YouTube channel. No audio or video is hosted on this site."}
         </p>
       </section>
-    </article>
+      </article>
+    </>
   );
 }

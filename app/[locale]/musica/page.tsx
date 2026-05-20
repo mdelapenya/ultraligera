@@ -2,12 +2,15 @@ import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
 import {
   ALBUMS_AND_EPS,
+  BAND,
   SINGLES,
   SOCIAL,
   type Release,
   type ReleaseKind,
 } from "@/lib/content";
 import { buildAlternates } from "@/lib/seo";
+import { breadcrumbsSchema, discographySchema } from "@/lib/schema";
+import { JsonLd } from "@/components/JsonLd";
 
 export async function generateMetadata({
   params,
@@ -38,7 +41,15 @@ export default async function MusicPage({
     k === "album" ? d.music.album : k === "ep" ? d.music.ep : d.music.single;
 
   return (
-    <article className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+    <>
+      <JsonLd data={discographySchema()} />
+      <JsonLd
+        data={breadcrumbsSchema(l, [
+          { name: BAND.name, path: "" },
+          { name: d.music.title, path: "/musica" },
+        ])}
+      />
+      <article className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
       <header className="mb-16 md:mb-24 max-w-4xl">
         <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--accent)] mb-4">
           {l === "es" ? "Discografía" : "Discography"}
@@ -138,7 +149,8 @@ export default async function MusicPage({
           </ul>
         </section>
       )}
-    </article>
+      </article>
+    </>
   );
 }
 

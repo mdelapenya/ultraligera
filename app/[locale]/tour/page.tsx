@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
-import { GIGS, type Gig } from "@/lib/content";
+import { BAND, GIGS, type Gig } from "@/lib/content";
 import { buildAlternates } from "@/lib/seo";
+import { breadcrumbsSchema, upcomingToursSchema } from "@/lib/schema";
+import { JsonLd } from "@/components/JsonLd";
 
 export async function generateMetadata({
   params,
@@ -37,7 +39,15 @@ export default async function TourPage({
   }
 
   return (
-    <article className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+    <>
+      <JsonLd data={upcomingToursSchema()} />
+      <JsonLd
+        data={breadcrumbsSchema(l, [
+          { name: BAND.name, path: "" },
+          { name: d.tour.title, path: "/tour" },
+        ])}
+      />
+      <article className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
       <header className="mb-16 md:mb-20">
         <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--accent)] mb-4">
           {d.nav.tour}
@@ -81,7 +91,8 @@ export default async function TourPage({
           </ul>
         </section>
       ) : null}
-    </article>
+      </article>
+    </>
   );
 }
 
