@@ -15,6 +15,7 @@ app/
   page.tsx                 # redirección a /es
   not-found.tsx            # 404 con burbujas de portadas
   icon.tsx, apple-icon.tsx # favicon + apple touch icon generados al vuelo
+  opengraph-image.tsx      # OG image (1200×630) para previews en redes
   robots.ts                # /robots.txt
   sitemap.xml/route.ts     # /sitemap.xml (con XSL stylesheet en /public)
   [locale]/                # rutas localizadas (ES por defecto, EN como alterna)
@@ -169,8 +170,11 @@ nombre como **Project Name** en Vercel al importar.
 
 ## Próximos pasos sugeridos
 
-- **OG image** (1200×630) — el único item del audit SEO que falta. Se
-  generaría programáticamente con `app/opengraph-image.tsx` + `next/og`,
-  igual que el favicon.
 - **Spotify embed**: cambiar el botón externo por el `iframe` del reproductor
   cuando se decida qué track destacar.
+- **Submitar el sitemap a Google Search Console** (una vez verificado el
+  dominio): `https://ultraligera.vercel.app/sitemap.xml`. Acelera el
+  descubrimiento de las páginas y permite ver impresiones reales.
+- **Lighthouse / Core Web Vitals**: el audit estático no puede medirlos.
+  Pasar `npx @lhci/cli autorun` (o Chrome DevTools → Lighthouse) cuando
+  haya un build de producción para confirmar performance.
