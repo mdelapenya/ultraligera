@@ -128,8 +128,10 @@ export function CoverBubbles({
             style={{
               width: sizeClamp,
               height: sizeClamp,
-              left: `${l.x}%`,
-              top: `${l.y}%`,
+              // Rounded to 2dp — full IEEE precision triggered hydration
+              // warnings because the browser normalizes inline percentages.
+              left: `${l.x.toFixed(2)}%`,
+              top: `${l.y.toFixed(2)}%`,
               filter: l.blur ? `blur(${l.blur}px)` : undefined,
               opacity: mounted ? 0.62 : 0,
               transition: "opacity 2s ease-out",
