@@ -41,6 +41,7 @@ type Dict = {
     membersTitle: string;
     bioTitle: string;
     bio: string[];
+    liveLineupNote: string;
   };
   music: {
     title: string;
@@ -177,6 +178,7 @@ const es: Dict = {
       "Tras su EP de debut Europa (2023), el disco que les disparó fue Pelo de foca (2025): agotaron entradas en cada parada de su gira por salas, con varias noches casi seguidas en La Riviera de Madrid.",
       "Su segundo álbum, Lapsus (2026), está en camino. La gira de presentación los lleva durante todo el verano y otoño por los grandes festivales del país.",
     ],
+    liveLineupNote: "En directo se les suma:",
   },
   music: {
     title: "Música",
@@ -316,6 +318,7 @@ const en: Dict = {
       "Their debut EP Europa (2023) was the opener, but the record that pushed them forward was Pelo de foca (2025): every stop on their Spanish club tour sold out, with several near-consecutive nights at La Riviera in Madrid.",
       "Their second album, Lapsus (2026), is on the way. The accompanying tour runs through summer and autumn at the country's main festivals.",
     ],
+    liveLineupNote: "Joining them live:",
   },
   music: {
     title: "Music",

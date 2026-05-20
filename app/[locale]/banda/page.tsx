@@ -33,23 +33,41 @@ export default async function BandPage({
         </h1>
       </header>
 
-      {/* Members */}
+      {/* Members — core (studio) lineup. Touring-only collaborators are
+          listed as a footnote so wide layouts don't end up with a half-row. */}
       <section className="mb-20 md:mb-28">
         <h2 className="display text-3xl md:text-5xl mb-8">{d.band.membersTitle}</h2>
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[color:var(--border)] border border-[color:var(--border)]">
-          {MEMBERS.map((m) => (
-            <li
-              key={m.name}
-              className="bg-black p-6 md:p-8 flex flex-col gap-2 hover:bg-[color:var(--accent)] group transition-colors"
-            >
-              <span className="font-mono text-xs uppercase tracking-widest text-white/45 group-hover:text-white/85">
-                {d.roles[m.roleKey]}
-                {m.liveOnly ? ` — ${d.roles.liveOnly}` : ""}
-              </span>
-              <span className="display text-4xl md:text-5xl">{m.name}</span>
-            </li>
-          ))}
-        </ul>
+        {(() => {
+          const core = MEMBERS.filter((m) => !m.liveOnly);
+          const live = MEMBERS.filter((m) => m.liveOnly);
+          return (
+            <>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[color:var(--border)] border border-[color:var(--border)]">
+                {core.map((m) => (
+                  <li
+                    key={m.name}
+                    className="bg-black p-6 md:p-8 flex flex-col gap-2 hover:bg-[color:var(--accent)] group transition-colors"
+                  >
+                    <span className="font-mono text-xs uppercase tracking-widest text-white/45 group-hover:text-white/85">
+                      {d.roles[m.roleKey]}
+                    </span>
+                    <span className="display text-3xl md:text-4xl lg:text-3xl xl:text-4xl">
+                      {m.name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              {live.length > 0 ? (
+                <p className="mt-6 text-xs font-mono uppercase tracking-widest text-white/45">
+                  {d.band.liveLineupNote}{" "}
+                  {live
+                    .map((m) => `${m.name} (${d.roles[m.roleKey]})`)
+                    .join(", ")}
+                </p>
+              ) : null}
+            </>
+          );
+        })()}
       </section>
 
       {/* Bio */}
