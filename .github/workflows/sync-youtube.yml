@@ -34,8 +34,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
         with:
           commit_message: "chore(media): refresh YouTube stats"
-          file_pattern: |
-            data/videos.json
-            data/videos-history.json
+          file_pattern: "data/videos.json data/videos-history.json"
           commit_user_name: ultraligera-bot
           commit_user_email: bot@users.noreply.github.com
