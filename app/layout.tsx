@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Bebas_Neue, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { COLORS, themeStyleBlock } from "@/lib/theme";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,7 +24,7 @@ const mono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#191919",
+  themeColor: COLORS.background,
 };
 
 export const metadata: Metadata = {
@@ -57,6 +58,9 @@ export default function RootLayout({
       lang="es"
       className={`${inter.variable} ${display.variable} ${mono.variable} h-full antialiased`}
     >
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: themeStyleBlock() }} />
+      </head>
       <body className="min-h-full flex flex-col">
         {children}
         <Analytics />

@@ -146,7 +146,7 @@ function SearchOverlay({ locale, onClose }: { locale: Locale; onClose: () => voi
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-2xl bg-[#0a0a0a] border border-[color:var(--border)] shadow-2xl"
+        className="w-full max-w-2xl bg-surface border border-[color:var(--border)] shadow-2xl"
       >
         <div className="flex items-center gap-3 px-5 border-b border-[color:var(--border)]">
           <svg
