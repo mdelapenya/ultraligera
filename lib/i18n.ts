@@ -144,6 +144,12 @@ type Dict = {
     media: string;
     legal: string;
   };
+  notFound: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    cta: string;
+  };
 };
 
 const es: Dict = {
@@ -292,6 +298,12 @@ const es: Dict = {
     media: "Vídeos y Shorts del canal oficial de Ultraligera en YouTube, con estadísticas día a día y top de vídeos más vistos.",
     legal: "Aviso legal del sitio de fans no oficial sobre Ultraligera: naturaleza del proyecto, datos personales, marcas y retirada de contenido.",
   },
+  notFound: {
+    eyebrow: "Error 404",
+    title: "Tú no lo ves",
+    body: "Esta página no existe — o ya no la encontramos. Como en la canción.",
+    cta: "Volver al inicio",
+  },
 };
 
 const en: Dict = {
@@ -438,6 +450,12 @@ const en: Dict = {
     tour: "Confirmed tour dates for Ultraligera 2026 across Spanish clubs and festivals. Information gathered from public sources.",
     media: "Videos and Shorts from Ultraligera's official YouTube channel, with day-by-day stats and the most-watched picks.",
     legal: "Legal notice for the unofficial fan site about Ultraligera: nature of the project, personal data, trademarks and content takedown.",
+  },
+  notFound: {
+    eyebrow: "Error 404",
+    title: "Tú no lo ves",
+    body: "This page doesn't exist — or we lost it. Like in the song.",
+    cta: "Back home",
   },
 };
 

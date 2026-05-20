@@ -3,7 +3,15 @@ import type { Locale } from "@/lib/i18n";
 import { getDict } from "@/lib/i18n";
 import { SITE, SOCIAL } from "@/lib/content";
 
-type Props = { locale: Locale };
+type Props = {
+  locale: Locale;
+  /**
+   * When true, drops the default top margin so the footer sits flush
+   * against the previous block. Used by the 404 page so the cover
+   * bubbles can drift up to the footer line without an empty gap.
+   */
+  flushTop?: boolean;
+};
 
 const socialLinks = [
   { label: "Instagram", href: SOCIAL.instagram },
@@ -13,11 +21,13 @@ const socialLinks = [
   { label: "Apple Music", href: SOCIAL.appleMusic },
 ];
 
-export function Footer({ locale }: Props) {
+export function Footer({ locale, flushTop }: Props) {
   const d = getDict(locale);
 
   return (
-    <footer className="mt-20 border-t border-[color:var(--border)] bg-surface/40">
+    <footer
+      className={`${flushTop ? "" : "mt-20"} border-t border-[color:var(--border)] bg-surface/40`}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid gap-10 md:grid-cols-2">
           <div>
