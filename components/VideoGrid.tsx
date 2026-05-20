@@ -13,6 +13,14 @@ const TYPE_KEYS: readonly TypeKey[] = ["videos", "shorts", "trending"];
 
 const TOP_VIDEO_COLORS = ["#f5b700", "#ef476f", "#06d6a0", "#118ab2", "#c77dff"];
 
+/** Trim the "Ultraligera - X (Videoclip Oficial)" noise down to just "X". */
+function cleanTrackTitle(title: string): string {
+  return title
+    .replace(/^\s*Ultraligera\s*[-–—]\s*/i, "")
+    .replace(/\s*\([^)]*\)\s*$/, "")
+    .trim();
+}
+
 function typeFromHash(hash: string): TypeKey | null {
   const slug = hash.replace(/^#/, "");
   return (TYPE_KEYS as readonly string[]).includes(slug) ? (slug as TypeKey) : null;
@@ -111,7 +119,7 @@ export function VideoGrid({
       .sort((a, b) => b.viewCount - a.viewCount)
       .slice(0, 5);
     return topByViews.map((v, i) => ({
-      name: v.title,
+      name: cleanTrackTitle(v.title),
       color: TOP_VIDEO_COLORS[i % TOP_VIDEO_COLORS.length],
       points: history
         .map((snap) => {

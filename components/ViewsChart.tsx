@@ -47,25 +47,23 @@ export function ViewsChart({
 
   return (
     <div className="border border-[color:var(--border)] p-6 md:p-8">
-      <div className="flex items-baseline justify-between gap-4 mb-6 flex-wrap">
-        <div>
-          <h3 className="display text-2xl md:text-3xl">{title}</h3>
-          {subtitle ? (
-            <p className="mt-1 text-xs font-mono uppercase tracking-widest text-white/40">
-              {subtitle}
-            </p>
-          ) : null}
-        </div>
+      <div className="mb-6">
+        <h3 className="display text-2xl md:text-3xl">{title}</h3>
+        {subtitle ? (
+          <p className="mt-1 text-xs font-mono uppercase tracking-widest text-white/40">
+            {subtitle}
+          </p>
+        ) : null}
         {series.length > 1 ? (
-          <ul className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
+          <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs">
             {series.map((s) => (
               <li key={s.name} className="flex items-center gap-2 text-white/70">
                 <span
                   aria-hidden
-                  className="inline-block w-3 h-[2px]"
+                  className="inline-block w-3 h-[2px] shrink-0"
                   style={{ background: s.color }}
                 />
-                <span className="truncate max-w-[16rem]">{s.name}</span>
+                <span>{s.name}</span>
               </li>
             ))}
           </ul>
@@ -129,13 +127,24 @@ function ChartSvg({
   // X labels: first, last, and ~3 in between when there's room.
   const xLabelIdx = pickXLabels(allDates.length);
 
+  // Format a tooltip value with full thousands separators — the compact
+  // formatter is only used for axis labels.
+  const nf = new Intl.NumberFormat(locale === "es" ? "es-ES" : "en-US");
+
   return (
     <svg
       viewBox={`0 0 ${W} ${H}`}
       className="w-full h-auto"
+      style={{ overflow: "visible" }}
       role="img"
       aria-label="Trending chart"
     >
+      <style>{`
+        .vc-point .vc-tip { opacity: 0; transition: opacity 100ms ease-out; pointer-events: none; }
+        .vc-point:hover .vc-tip, .vc-point:focus-within .vc-tip { opacity: 1; }
+        .vc-point .vc-dot { transition: r 100ms ease-out; }
+        .vc-point:hover .vc-dot { r: 5; }
+      `}</style>
       {gridValues.map((gv, i) => {
         const y = yForValue(gv);
         return (
@@ -188,17 +197,52 @@ function ChartSvg({
           .map((p) => {
             const idx = indexByDate.get(p.date);
             if (idx === undefined) return null;
-            return { x: xForIndex(idx), y: yForValue(p.value) };
+            return {
+              x: xForIndex(idx),
+              y: yForValue(p.value),
+              date: p.date,
+              value: p.value,
+            };
           })
-          .filter((p): p is { x: number; y: number } => p !== null);
+          .filter(
+            (p): p is { x: number; y: number; date: string; value: number } =>
+              p !== null,
+          );
         if (pts.length === 0) return null;
         const dStr = pts.map((p, i) => `${i === 0 ? "M" : "L"}${p.x},${p.y}`).join(" ");
         return (
           <g key={s.name}>
             <path d={dStr} fill="none" stroke={s.color} strokeWidth={2} />
-            {pts.map((p, i) => (
-              <circle key={i} cx={p.x} cy={p.y} r={3} fill={s.color} />
-            ))}
+            {pts.map((p, i) => {
+              const label = `${nf.format(p.value)} · ${formatDate(p.date, locale)}`;
+              return (
+                <g key={i} className="vc-point" tabIndex={0}>
+                  <circle
+                    className="vc-dot"
+                    cx={p.x}
+                    cy={p.y}
+                    r={3}
+                    fill={s.color}
+                  />
+                  {/* Larger transparent target makes hover/touch easier. */}
+                  <circle cx={p.x} cy={p.y} r={12} fill="transparent" />
+                  <text
+                    className="vc-tip"
+                    x={p.x}
+                    y={p.y - 12}
+                    fontSize={11}
+                    textAnchor="middle"
+                    fill="white"
+                    stroke="rgba(0,0,0,0.85)"
+                    strokeWidth={3}
+                    paintOrder="stroke"
+                    fontFamily="var(--font-mono, monospace)"
+                  >
+                    {label}
+                  </text>
+                </g>
+              );
+            })}
           </g>
         );
       })}
