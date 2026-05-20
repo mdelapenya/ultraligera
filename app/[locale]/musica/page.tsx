@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
 import {
@@ -171,12 +172,17 @@ function ReleaseSleeve({
     <div className="aspect-square w-full rounded-sm relative overflow-hidden border border-white/10 group bg-zinc-900">
       {r.cover ? (
         <>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={r.cover}
             alt={`${r.title}${kindLabel ? ` — ${kindLabel}` : ""}${r.year ? ` (${r.year})` : ""}`}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading={eager ? "eager" : "lazy"}
+            fill
+            priority={eager}
+            sizes={
+              small
+                ? "(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, 50vw"
+                : "(min-width: 768px) 50vw, 95vw"
+            }
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20 pointer-events-none" />
         </>

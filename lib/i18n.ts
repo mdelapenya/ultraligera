@@ -145,6 +145,7 @@ type Dict = {
     music: string;
     tour: string;
     media: string;
+    contact: string;
     legal: string;
   };
   notFound: {
@@ -320,6 +321,7 @@ const es: Dict = {
     music: "Discografía de Ultraligera: EP Europa, álbum Pelo de foca y el próximo Lapsus (2026). Enlaces a Apple Music, Spotify y YouTube.",
     tour: "Fechas confirmadas de la gira de Ultraligera 2026 por salas y festivales de España. Información recopilada de fuentes públicas.",
     media: "Vídeos y Shorts del canal oficial de Ultraligera en YouTube, con estadísticas día a día y top de vídeos más vistos.",
+    contact: "Cómo contactar con Ultraligera vía sus canales oficiales, y cómo reportar erratas o aportar contenido a este sitio de fans no oficial.",
     legal: "Aviso legal del sitio de fans no oficial sobre Ultraligera: naturaleza del proyecto, datos personales, marcas y retirada de contenido.",
   },
   notFound: {
@@ -493,6 +495,7 @@ const en: Dict = {
     music: "Ultraligera discography: the Europa EP, the Pelo de foca album and the upcoming Lapsus (2026). Links to Apple Music, Spotify and YouTube.",
     tour: "Confirmed tour dates for Ultraligera 2026 across Spanish clubs and festivals. Information gathered from public sources.",
     media: "Videos and Shorts from Ultraligera's official YouTube channel, with day-by-day stats and the most-watched picks.",
+    contact: "How to reach Ultraligera through their official channels, and how to report mistakes or contribute to this unofficial fan site.",
     legal: "Legal notice for the unofficial fan site about Ultraligera: nature of the project, personal data, trademarks and content takedown.",
   },
   notFound: {

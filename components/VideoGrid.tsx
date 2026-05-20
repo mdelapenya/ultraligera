@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import type { Locale } from "@/lib/i18n";
 import { getDict } from "@/lib/i18n";
@@ -274,12 +275,13 @@ export function VideoGrid({
                   className="block"
                 >
                   <div className="relative bg-zinc-900 border border-[color:var(--border)] overflow-hidden aspect-video">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
                       alt={v.title}
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition"
-                      loading={i < 6 ? "eager" : "lazy"}
+                      fill
+                      priority={i < 4}
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 95vw"
+                      className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition"
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="w-12 h-12 rounded-full bg-[color:var(--accent)] flex items-center justify-center text-white text-lg">
@@ -376,12 +378,17 @@ export function VideoGrid({
                     isShorts ? "aspect-[9/16]" : "aspect-video"
                   }`}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
                     alt={v.title}
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition"
-                    loading={i < 6 ? "eager" : "lazy"}
+                    fill
+                    priority={i < 4}
+                    sizes={
+                      isShorts
+                        ? "(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, 50vw"
+                        : "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 95vw"
+                    }
+                    className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition"
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="w-12 h-12 rounded-full bg-[color:var(--accent)] flex items-center justify-center text-white text-lg">
