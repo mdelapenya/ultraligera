@@ -137,7 +137,7 @@ vercel --prod       # promover a producción
 
 ### Dominio
 
-Para usar `ultraligera-fans.vercel.app` (o el slug que prefieras), pon ese
+Para usar `ultraligera.vercel.app` (o el slug que prefieras), pon ese
 nombre como **Project Name** en Vercel al importar.
 
 ## Próximos pasos sugeridos
