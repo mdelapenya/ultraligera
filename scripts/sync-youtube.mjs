@@ -16,6 +16,7 @@ import { dirname, resolve } from "node:path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const VIDEOS_PATH = resolve(__dirname, "..", "data", "videos.json");
+const HISTORY_PATH = resolve(__dirname, "..", "data", "videos-history.json");
 
 const DRY_RUN = process.argv.includes("--dry-run");
 const API_KEY = process.env.YOUTUBE_API_KEY;
@@ -196,8 +197,12 @@ async function main() {
     return;
   }
 
-  // Skip the write if nothing of substance has changed (avoid noise commits
-  // when only the syncedAt timestamp would shift).
+  // The history file always gets a daily snapshot, independent of whether
+  // videos.json itself changes — small daily deltas still matter for trending.
+  await upsertHistory({ videos, totalViews, totalLikes });
+
+  // Skip the videos.json write if nothing of substance has changed (avoid
+  // noise commits when only the syncedAt timestamp would shift).
   let prev = null;
   try {
     prev = JSON.parse(await readFile(VIDEOS_PATH, "utf8"));
@@ -212,6 +217,46 @@ async function main() {
 
   await writeFile(VIDEOS_PATH, JSON.stringify(next, null, 2) + "\n", "utf8");
   console.log(`[sync-youtube] wrote ${VIDEOS_PATH}`);
+}
+
+/**
+ * Append (or replace, if same UTC day) a snapshot in data/videos-history.json
+ * so the /media page can render a daily trending chart. One entry per day:
+ * re-running the sync within the same day overwrites the day's entry with
+ * fresher numbers instead of growing the file linearly with each run.
+ */
+async function upsertHistory({ videos, totalViews, totalLikes }) {
+  const date = new Date().toISOString().slice(0, 10);
+  const snapshot = {
+    date,
+    totalViews,
+    totalLikes,
+    videoCount: videos.length,
+    videos: videos.map((v) => ({
+      id: v.id,
+      views: v.viewCount ?? 0,
+      likes: v.likeCount ?? 0,
+    })),
+  };
+
+  let history = { snapshots: [] };
+  try {
+    const raw = JSON.parse(await readFile(HISTORY_PATH, "utf8"));
+    if (raw && Array.isArray(raw.snapshots)) history = raw;
+  } catch {
+    // first run, file may be missing or invalid
+  }
+
+  const last = history.snapshots[history.snapshots.length - 1];
+  if (last && last.date === date) {
+    history.snapshots[history.snapshots.length - 1] = snapshot;
+    console.log(`[sync-youtube] history: refreshed snapshot for ${date}`);
+  } else {
+    history.snapshots.push(snapshot);
+    console.log(`[sync-youtube] history: appended snapshot for ${date}`);
+  }
+
+  await writeFile(HISTORY_PATH, JSON.stringify(history, null, 2) + "\n", "utf8");
 }
 
 /**

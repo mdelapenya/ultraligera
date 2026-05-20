@@ -132,6 +132,19 @@ export const VIDEOS: Video[] = (videosData.videos as Video[]) ?? [];
 export const VIDEOS_SYNCED_AT: string | null = videosData.syncedAt ?? null;
 export const VIDEOS_CHANNEL_TITLE: string | null = videosData.channelTitle ?? null;
 
+export type VideoHistorySnapshot = {
+  date: string;
+  totalViews: number;
+  totalLikes: number;
+  videoCount: number;
+  videos: { id: string; views: number; likes: number }[];
+};
+
+import historyData from "@/data/videos-history.json";
+
+export const VIDEOS_HISTORY: VideoHistorySnapshot[] =
+  (historyData.snapshots as VideoHistorySnapshot[]) ?? [];
+
 export type NavItem = { href: string; labelKey: NavKey };
 export type NavKey = "tour" | "music" | "band" | "media" | "contact" | "shop";
 

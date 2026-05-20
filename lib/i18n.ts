@@ -76,6 +76,13 @@ type Dict = {
     noVideos: string;
     noShorts: string;
     likesHidden: string;
+    trendingTitle: string;
+    trendingSubtitle: string;
+    channelTotalLabel: string;
+    channelTotalSubtitle: string;
+    topVideosLabel: string;
+    topVideosSubtitle: string;
+    notEnoughHistory: string;
   };
   contact: {
     title: string;
@@ -203,6 +210,14 @@ const es: Dict = {
     noVideos: "Aún no hay datos. El sitio se sincroniza automáticamente cada noche con el canal de YouTube.",
     noShorts: "Sin Shorts publicados por ahora.",
     likesHidden: "likes ocultos",
+    trendingTitle: "Trending",
+    trendingSubtitle:
+      "Visualizaciones acumuladas día a día. Snapshot diario tras cada sync nocturno.",
+    channelTotalLabel: "Total del canal",
+    channelTotalSubtitle: "Suma de reproducciones de todos los vídeos",
+    topVideosLabel: "Top vídeos",
+    topVideosSubtitle: "Cinco vídeos más vistos del canal",
+    notEnoughHistory: "Aún no hay suficiente histórico — vuelve mañana.",
   },
   contact: {
     title: "Contacto",
@@ -329,6 +344,13 @@ const en: Dict = {
     noVideos: "No data yet. The site auto-syncs nightly with the YouTube channel.",
     noShorts: "No Shorts published yet.",
     likesHidden: "likes hidden",
+    trendingTitle: "Trending",
+    trendingSubtitle: "Cumulative daily views. Daily snapshot taken after each nightly sync.",
+    channelTotalLabel: "Channel total",
+    channelTotalSubtitle: "Sum of plays across every video",
+    topVideosLabel: "Top videos",
+    topVideosSubtitle: "Five most-watched videos on the channel",
+    notEnoughHistory: "Not enough history yet — check back tomorrow.",
   },
   contact: {
     title: "Contact",

@@ -5,8 +5,32 @@ import {
   VIDEOS,
   VIDEOS_SYNCED_AT,
   VIDEOS_CHANNEL_TITLE,
+  VIDEOS_HISTORY,
+  type Video,
+  type VideoHistorySnapshot,
 } from "@/lib/content";
 import { VideoGrid } from "@/components/VideoGrid";
+import { ViewsChart, type ChartSeries } from "@/components/ViewsChart";
+
+const TOP_VIDEO_COLORS = ["#f5b700", "#ef476f", "#06d6a0", "#118ab2", "#c77dff"];
+
+function buildTopVideoSeries(
+  videos: Video[],
+  history: VideoHistorySnapshot[],
+  topN = 5,
+): ChartSeries[] {
+  const top = videos.slice(0, topN);
+  return top.map((v, i) => ({
+    name: v.title,
+    color: TOP_VIDEO_COLORS[i % TOP_VIDEO_COLORS.length],
+    points: history
+      .map((snap) => {
+        const hit = snap.videos.find((x) => x.id === v.id);
+        return hit ? { date: snap.date, value: hit.views } : null;
+      })
+      .filter((p): p is { date: string; value: number } => p !== null),
+  }));
+}
 
 export async function generateMetadata({
   params,
@@ -56,6 +80,45 @@ export default async function MediaPage({
           </p>
         ) : null}
       </header>
+
+      {VIDEOS_HISTORY.length > 0 ? (
+        <section className="mb-16 md:mb-20">
+          <header className="mb-6 md:mb-8">
+            <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--accent)] mb-3">
+              {d.media.trendingTitle}
+            </p>
+            <p className="text-sm md:text-base text-white/70 max-w-2xl">
+              {d.media.trendingSubtitle}
+            </p>
+          </header>
+
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2">
+            <ViewsChart
+              title={d.media.channelTotalLabel}
+              subtitle={d.media.channelTotalSubtitle}
+              emptyLabel={d.media.notEnoughHistory}
+              locale={l}
+              series={[
+                {
+                  name: d.media.channelTotalLabel,
+                  color: "#f5b700",
+                  points: VIDEOS_HISTORY.map((s) => ({
+                    date: s.date,
+                    value: s.totalViews,
+                  })),
+                },
+              ]}
+            />
+            <ViewsChart
+              title={d.media.topVideosLabel}
+              subtitle={d.media.topVideosSubtitle}
+              emptyLabel={d.media.notEnoughHistory}
+              locale={l}
+              series={buildTopVideoSeries(VIDEOS, VIDEOS_HISTORY)}
+            />
+          </div>
+        </section>
+      ) : null}
 
       {hasVideos ? (
         <VideoGrid videos={VIDEOS} locale={l} />
