@@ -66,6 +66,7 @@ type Dict = {
     subtitle: string;
     typeVideos: string;
     typeShorts: string;
+    typeTrending: string;
     sortByViews: string;
     sortByLikes: string;
     sortByDate: string;
@@ -76,7 +77,6 @@ type Dict = {
     noVideos: string;
     noShorts: string;
     likesHidden: string;
-    trendingTitle: string;
     trendingSubtitle: string;
     channelTotalLabel: string;
     channelTotalSubtitle: string;
@@ -199,6 +199,7 @@ const es: Dict = {
     subtitle: "Vídeos y Shorts del canal oficial de YouTube, ordenados por reproducciones, likes o más recientes.",
     typeVideos: "Vídeos",
     typeShorts: "Shorts",
+    typeTrending: "Trending",
     sortByViews: "Más vistos",
     sortByLikes: "Más likes",
     sortByDate: "Más recientes",
@@ -210,7 +211,6 @@ const es: Dict = {
     noVideos: "Aún no hay datos. El sitio se sincroniza automáticamente cada noche con el canal de YouTube.",
     noShorts: "Sin Shorts publicados por ahora.",
     likesHidden: "likes ocultos",
-    trendingTitle: "Trending",
     trendingSubtitle:
       "Visualizaciones acumuladas día a día. Snapshot diario tras cada sync nocturno.",
     channelTotalLabel: "Total del canal",
@@ -333,6 +333,7 @@ const en: Dict = {
     subtitle: "Videos and Shorts from the official YouTube channel, sortable by views, likes or recency.",
     typeVideos: "Videos",
     typeShorts: "Shorts",
+    typeTrending: "Trending",
     sortByViews: "Most viewed",
     sortByLikes: "Most liked",
     sortByDate: "Newest",
@@ -344,7 +345,6 @@ const en: Dict = {
     noVideos: "No data yet. The site auto-syncs nightly with the YouTube channel.",
     noShorts: "No Shorts published yet.",
     likesHidden: "likes hidden",
-    trendingTitle: "Trending",
     trendingSubtitle: "Cumulative daily views. Daily snapshot taken after each nightly sync.",
     channelTotalLabel: "Channel total",
     channelTotalSubtitle: "Sum of plays across every video",

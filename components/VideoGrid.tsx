@@ -1,12 +1,22 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Locale } from "@/lib/i18n";
 import { getDict } from "@/lib/i18n";
-import type { Video } from "@/lib/content";
+import type { Video, VideoHistorySnapshot } from "@/lib/content";
+import { ViewsChart, type ChartSeries } from "@/components/ViewsChart";
 
 type SortKey = "views" | "likes" | "date";
-type TypeKey = "videos" | "shorts";
+type TypeKey = "videos" | "shorts" | "trending";
+
+const TYPE_KEYS: readonly TypeKey[] = ["videos", "shorts", "trending"];
+
+const TOP_VIDEO_COLORS = ["#f5b700", "#ef476f", "#06d6a0", "#118ab2", "#c77dff"];
+
+function typeFromHash(hash: string): TypeKey | null {
+  const slug = hash.replace(/^#/, "");
+  return (TYPE_KEYS as readonly string[]).includes(slug) ? (slug as TypeKey) : null;
+}
 
 function durationSeconds(iso: string): number {
   const m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
@@ -27,10 +37,38 @@ function formatDuration(iso: string): string {
   return h > 0 ? `${h}:${mm}:${ss}` : `${mm}:${ss}`;
 }
 
-export function VideoGrid({ videos, locale }: { videos: Video[]; locale: Locale }) {
+export function VideoGrid({
+  videos,
+  locale,
+  history,
+}: {
+  videos: Video[];
+  locale: Locale;
+  history: VideoHistorySnapshot[];
+}) {
   const d = getDict(locale);
   const [type, setType] = useState<TypeKey>("videos");
   const [sort, setSort] = useState<SortKey>("views");
+
+  // Keep the tab in sync with the URL hash so reloads and shared links land on
+  // the right view. We can't read window.location during render (SSR), so we
+  // sync after mount and on subsequent hashchange events.
+  useEffect(() => {
+    const apply = () => {
+      const fromHash = typeFromHash(window.location.hash);
+      if (fromHash) setType(fromHash);
+    };
+    apply();
+    window.addEventListener("hashchange", apply);
+    return () => window.removeEventListener("hashchange", apply);
+  }, []);
+
+  function selectType(next: TypeKey) {
+    setType(next);
+    if (typeof window !== "undefined") {
+      window.history.replaceState(null, "", `#${next}`);
+    }
+  }
 
   const { videosLong, shorts } = useMemo(() => {
     const longs: Video[] = [];
@@ -66,10 +104,39 @@ export function VideoGrid({ videos, locale }: { videos: Video[]; locale: Locale 
   );
 
   const isShorts = type === "shorts";
+  const isTrending = type === "trending";
 
-  const types: { key: TypeKey; label: string; count: number }[] = [
+  const topVideoSeries: ChartSeries[] = useMemo(() => {
+    const topByViews = [...videos]
+      .sort((a, b) => b.viewCount - a.viewCount)
+      .slice(0, 5);
+    return topByViews.map((v, i) => ({
+      name: v.title,
+      color: TOP_VIDEO_COLORS[i % TOP_VIDEO_COLORS.length],
+      points: history
+        .map((snap) => {
+          const hit = snap.videos.find((x) => x.id === v.id);
+          return hit ? { date: snap.date, value: hit.views } : null;
+        })
+        .filter((p): p is { date: string; value: number } => p !== null),
+    }));
+  }, [videos, history]);
+
+  const channelTotalSeries: ChartSeries[] = useMemo(
+    () => [
+      {
+        name: d.media.channelTotalLabel,
+        color: "#f5b700",
+        points: history.map((s) => ({ date: s.date, value: s.totalViews })),
+      },
+    ],
+    [history, d.media.channelTotalLabel],
+  );
+
+  const types: { key: TypeKey; label: string; count: number | null }[] = [
     { key: "videos", label: d.media.typeVideos, count: counts.videos },
     { key: "shorts", label: d.media.typeShorts, count: counts.shorts },
+    { key: "trending", label: d.media.typeTrending, count: history.length || null },
   ];
 
   const sortOptions: { key: SortKey; label: string }[] = [
@@ -90,17 +157,22 @@ export function VideoGrid({ videos, locale }: { videos: Video[]; locale: Locale 
               role="tab"
               type="button"
               aria-selected={active}
-              onClick={() => setType(t.key)}
+              onClick={() => selectType(t.key)}
               className={`relative pb-3 pt-1 display text-2xl md:text-3xl tracking-wide transition-colors ${
                 active
                   ? "text-white"
                   : "text-white/35 hover:text-white/70"
               }`}
             >
-              {t.label}{" "}
-              <span className="font-mono text-xs align-middle text-white/40">
-                {t.count}
-              </span>
+              {t.label}
+              {t.count != null && (
+                <>
+                  {" "}
+                  <span className="font-mono text-xs align-middle text-white/40">
+                    {t.count}
+                  </span>
+                </>
+              )}
               {active && (
                 <span className="absolute -bottom-px left-0 right-0 h-0.5 bg-[color:var(--accent)]" />
               )}
@@ -109,30 +181,54 @@ export function VideoGrid({ videos, locale }: { videos: Video[]; locale: Locale 
         })}
       </div>
 
-      {/* Sort selector */}
-      <div role="tablist" className="flex flex-wrap gap-2 mb-8">
-        {sortOptions.map((o) => {
-          const active = sort === o.key;
-          return (
-            <button
-              key={o.key}
-              role="tab"
-              type="button"
-              aria-selected={active}
-              onClick={() => setSort(o.key)}
-              className={`px-4 py-2 text-xs uppercase tracking-[0.18em] border transition-colors ${
-                active
-                  ? "bg-[color:var(--accent)] text-white border-[color:var(--accent)]"
-                  : "border-white/15 text-white/70 hover:border-white/40 hover:text-white"
-              }`}
-            >
-              {o.label}
-            </button>
-          );
-        })}
-      </div>
+      {/* Sort selector — hidden on the trending tab, which doesn't use it */}
+      {!isTrending && (
+        <div role="tablist" className="flex flex-wrap gap-2 mb-8">
+          {sortOptions.map((o) => {
+            const active = sort === o.key;
+            return (
+              <button
+                key={o.key}
+                role="tab"
+                type="button"
+                aria-selected={active}
+                onClick={() => setSort(o.key)}
+                className={`px-4 py-2 text-xs uppercase tracking-[0.18em] border transition-colors ${
+                  active
+                    ? "bg-[color:var(--accent)] text-white border-[color:var(--accent)]"
+                    : "border-white/15 text-white/70 hover:border-white/40 hover:text-white"
+                }`}
+              >
+                {o.label}
+              </button>
+            );
+          })}
+        </div>
+      )}
 
-      {filtered.length === 0 ? (
+      {isTrending ? (
+        <div>
+          <p className="text-sm md:text-base text-white/70 max-w-2xl mb-6 md:mb-8">
+            {d.media.trendingSubtitle}
+          </p>
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2">
+            <ViewsChart
+              title={d.media.channelTotalLabel}
+              subtitle={d.media.channelTotalSubtitle}
+              emptyLabel={d.media.notEnoughHistory}
+              locale={locale}
+              series={channelTotalSeries}
+            />
+            <ViewsChart
+              title={d.media.topVideosLabel}
+              subtitle={d.media.topVideosSubtitle}
+              emptyLabel={d.media.notEnoughHistory}
+              locale={locale}
+              series={topVideoSeries}
+            />
+          </div>
+        </div>
+      ) : filtered.length === 0 ? (
         <p className="text-white/55 text-base py-12 text-center">
           {isShorts ? d.media.noShorts : d.media.noVideos}
         </p>
