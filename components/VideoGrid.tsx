@@ -11,10 +11,19 @@ type TypeKey = "featured" | "videos" | "shorts" | "trending";
 
 const TYPE_KEYS: readonly TypeKey[] = ["featured", "videos", "shorts", "trending"];
 
-const TOP_VIDEO_COLORS = ["#f5b700", "#ef476f", "#06d6a0", "#118ab2", "#c77dff"];
-
 const DEFAULT_ACTIVE_VIDEOS = 5;
 const VISIBLE_CHIPS_DEFAULT = 20;
+
+/**
+ * Procedural color for each slot. Golden-angle hue rotation keeps adjacent
+ * slots visually distinct and avoids the "5 fixed colors → cycle and collide"
+ * problem. Saturation/lightness are fixed for cohesion on a dark background.
+ */
+function slotColor(slot: number): string {
+  const GOLDEN_ANGLE = 137.508;
+  const hue = (45 + slot * GOLDEN_ANGLE) % 360;
+  return `hsl(${hue.toFixed(1)}, 72%, 58%)`;
+}
 
 /** Trim the "Ultraligera - X (Videoclip Oficial)" noise down to just "X". */
 function cleanTrackTitle(title: string): string {
@@ -162,7 +171,7 @@ export function VideoGrid({
       if (!v) return;
       out.push({
         name: cleanTrackTitle(v.title),
-        color: TOP_VIDEO_COLORS[slotIdx % TOP_VIDEO_COLORS.length],
+        color: slotColor(slotIdx),
         points: history
           .map((snap) => {
             const hit = snap.videos.find((x) => x.id === v.id);
@@ -465,7 +474,7 @@ function VideoSelector({
           const slotIdx = activeSlots.indexOf(v.id);
           const active = slotIdx >= 0;
           const color = active
-            ? TOP_VIDEO_COLORS[slotIdx % TOP_VIDEO_COLORS.length]
+            ? slotColor(slotIdx)
             : null;
           return (
             <li key={v.id}>
