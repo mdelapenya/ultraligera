@@ -13,6 +13,11 @@
   --color-accent: var(--accent);
   --color-surface: var(--surface);
   --color-border: var(--border);
+  /* Alias Tailwind's built-in `white` and `black` to the theme tokens so
+     every `text-white`, `bg-white/40`, `bg-black/70`, etc. (alpha variants
+     included) picks up the dampened palette without a codebase-wide sweep. */
+  --color-white: var(--foreground);
+  --color-black: var(--background);
   --font-sans: var(--font-inter);
   --font-display: var(--font-display);
   --font-mono: var(--font-mono);
@@ -72,5 +77,5 @@ a { text-underline-offset: 4px; }
 
 ::selection {
   background: var(--accent);
-  color: #fff;
+  color: var(--foreground);
 }

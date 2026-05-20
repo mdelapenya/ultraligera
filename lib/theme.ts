@@ -17,7 +17,15 @@
 export const COLORS = {
   /** Body background — sampled from the "Mírame" cover art (rgb 25,25,25). */
   background: "#191919",
-  foreground: "#f5f5f4",
+  /**
+   * Primary text color. Pure white #fff mixed 9.8% toward black — same
+   * transform that takes #000 to the #191919 body background and #ef3b2c
+   * to the softened accent. Tailwind's `white` token is aliased to this
+   * via the @theme inline block in globals.css, so all `text-white*` and
+   * `bg-white*` utilities (including alpha variants) pick up the softer
+   * tone without sweeping the codebase.
+   */
+  foreground: "#e6e6e6",
   muted: "#a3a3a3",
   /**
    * Brand red, used for the accent dot, CTAs, and selection highlight.
