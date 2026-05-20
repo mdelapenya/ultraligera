@@ -4,6 +4,7 @@ export const SITE = {
   hashtag: "#Ultraligera",
   unofficial: true as const,
   copyrightYear: new Date().getFullYear(),
+  repoUrl: "https://github.com/mdelapenya/ultraligera",
 };
 
 /**
@@ -178,6 +179,7 @@ export const NAV: NavItem[] = [
   { href: "/musica", labelKey: "music" },
   { href: "/banda", labelKey: "band" },
   { href: "/media", labelKey: "media" },
+  { href: "/contacto", labelKey: "contact" },
 ];
 
 /**

@@ -7,6 +7,7 @@ const PATHS = [
   "/musica",
   "/banda",
   "/media",
+  "/contacto",
   "/aviso-legal",
 ] as const;
 
