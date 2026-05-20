@@ -6,6 +6,19 @@ export const SITE = {
   copyrightYear: new Date().getFullYear(),
 };
 
+/**
+ * Facts about the band itself (not the fan site). Used for JSON-LD schema
+ * (MusicGroup) and anywhere we need the canonical entity attributes.
+ */
+export const BAND = {
+  name: "Ultraligera",
+  /** Official logo from the band's site (Wix CDN). Used here under
+   *  nominative fair use for a non-commercial fan project. */
+  logo: "https://static.wixstatic.com/media/5740a2_494e2b79bfdd40b0a146aea4ed95ea61~mv2.png/v1/fill/w_136,h_134,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/SvceArGA.png",
+  foundingLocation: "Madrid, Spain",
+  foundingYear: 2021,
+} as const;
+
 export const SOCIAL = {
   instagram: "https://www.instagram.com/ultraligeraoficial/",
   tiktok: "https://www.tiktok.com/@ultraligeraoficial",
