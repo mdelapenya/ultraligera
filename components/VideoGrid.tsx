@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Locale } from "@/lib/i18n";
 import { getDict } from "@/lib/i18n";
-import type { Video, VideoHistorySnapshot } from "@/lib/content";
+import type { FeaturedVideo, Video, VideoHistorySnapshot } from "@/lib/content";
 import { ViewsChart, type ChartSeries } from "@/components/ViewsChart";
 
 type SortKey = "views" | "likes" | "date";
@@ -49,10 +49,12 @@ export function VideoGrid({
   videos,
   locale,
   history,
+  featured,
 }: {
   videos: Video[];
   locale: Locale;
   history: VideoHistorySnapshot[];
+  featured: FeaturedVideo[];
 }) {
   const d = getDict(locale);
   const [type, setType] = useState<TypeKey>("videos");
@@ -142,6 +144,7 @@ export function VideoGrid({
   );
 
   const types: { key: TypeKey; label: string; count: number | null }[] = [
+    { key: "featured", label: d.media.typeFeatured, count: featured.length || null },
     { key: "videos", label: d.media.typeVideos, count: counts.videos },
     { key: "shorts", label: d.media.typeShorts, count: counts.shorts },
     { key: "trending", label: d.media.typeTrending, count: history.length || null },
@@ -189,8 +192,8 @@ export function VideoGrid({
         })}
       </div>
 
-      {/* Sort selector — hidden on the trending tab, which doesn't use it */}
-      {!isTrending && (
+      {/* Sort selector — hidden on tabs whose order is editorial, not data-driven */}
+      {!isTrending && !isFeatured && (
         <div role="tablist" className="flex flex-wrap gap-2 mb-8">
           {sortOptions.map((o) => {
             const active = sort === o.key;
@@ -214,7 +217,61 @@ export function VideoGrid({
         </div>
       )}
 
-      {isTrending ? (
+      {isFeatured ? (
+        featured.length === 0 ? (
+          <p className="text-white/55 text-base py-12 text-center">
+            {d.media.noFeatured}
+          </p>
+        ) : (
+          <ul className="grid gap-8 md:gap-10 md:grid-cols-2 lg:grid-cols-3">
+            {featured.map((v, i) => (
+              <li key={v.id} className="group">
+                <a
+                  href={`https://www.youtube.com/watch?v=${v.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <div className="relative bg-zinc-900 border border-[color:var(--border)] overflow-hidden aspect-video">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
+                      alt={v.title}
+                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition"
+                      loading={i < 6 ? "eager" : "lazy"}
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="w-12 h-12 rounded-full bg-[color:var(--accent)] flex items-center justify-center text-white text-lg">
+                        ▶
+                      </span>
+                    </div>
+                    <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-sm text-white text-[10px] font-mono uppercase tracking-widest px-2 py-1">
+                      #{String(i + 1).padStart(2, "0")}
+                    </div>
+                  </div>
+
+                  <div className="mt-3">
+                    <h3 className="display leading-tight group-hover:text-[color:var(--accent)] transition-colors text-xl md:text-2xl">
+                      {v.title}
+                    </h3>
+                    <ul className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-xs font-mono text-white/55">
+                      <li>
+                        {d.media.featuredAuthorBy}{" "}
+                        <span className="text-white/85">{v.author}</span>
+                      </li>
+                      <li>
+                        <time dateTime={v.addedAt}>
+                          {dateFmt.format(new Date(v.addedAt))}
+                        </time>
+                      </li>
+                    </ul>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      ) : isTrending ? (
         <div>
           <p className="text-sm md:text-base text-white/70 max-w-2xl mb-6 md:mb-8">
             {d.media.trendingSubtitle}

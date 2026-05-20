@@ -6,6 +6,7 @@ import {
   VIDEOS_SYNCED_AT,
   VIDEOS_CHANNEL_TITLE,
   VIDEOS_HISTORY,
+  FEATURED_VIDEOS,
 } from "@/lib/content";
 import { VideoGrid } from "@/components/VideoGrid";
 
@@ -59,7 +60,12 @@ export default async function MediaPage({
       </header>
 
       {hasVideos ? (
-        <VideoGrid videos={VIDEOS} locale={l} history={VIDEOS_HISTORY} />
+        <VideoGrid
+          videos={VIDEOS}
+          locale={l}
+          history={VIDEOS_HISTORY}
+          featured={FEATURED_VIDEOS}
+        />
       ) : (
         <div className="border border-[color:var(--border)] p-8 md:p-12 text-center">
           <p className="display text-2xl md:text-3xl text-white/70 max-w-xl mx-auto leading-tight">

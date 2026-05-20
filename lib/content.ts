@@ -145,6 +145,18 @@ import historyData from "@/data/videos-history.json";
 export const VIDEOS_HISTORY: VideoHistorySnapshot[] =
   (historyData.snapshots as VideoHistorySnapshot[]) ?? [];
 
+export type FeaturedVideo = {
+  id: string;
+  title: string;
+  author: string;
+  addedAt: string;
+};
+
+import featuredData from "@/data/featured-videos.json";
+
+export const FEATURED_VIDEOS: FeaturedVideo[] =
+  (featuredData.videos as FeaturedVideo[]) ?? [];
+
 export type NavItem = { href: string; labelKey: NavKey };
 export type NavKey = "tour" | "music" | "band" | "media" | "contact" | "shop";
 
