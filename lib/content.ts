@@ -146,6 +146,13 @@ export const VIDEOS: Video[] = (videosData.videos as Video[]) ?? [];
 export const VIDEOS_SYNCED_AT: string | null = videosData.syncedAt ?? null;
 export const VIDEOS_CHANNEL_TITLE: string | null = videosData.channelTitle ?? null;
 
+/** Sum of viewCount across every public video on the channel. Updates
+ *  nightly via the YouTube sync bot. */
+export const VIDEOS_TOTAL_VIEWS: number = VIDEOS.reduce(
+  (sum, v) => sum + (v.viewCount ?? 0),
+  0,
+);
+
 export type VideoHistorySnapshot = {
   date: string;
   totalViews: number;

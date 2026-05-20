@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
-import { GIGS, RELEASES, SOCIAL } from "@/lib/content";
+import { GIGS, RELEASES, SOCIAL, VIDEOS_TOTAL_VIEWS } from "@/lib/content";
 import { buildAlternates } from "@/lib/seo";
 import {
   musicGroupSchema,
@@ -39,6 +39,12 @@ export default async function Home({
   const today = new Date();
   const upcoming = GIGS.filter((g) => new Date(g.rawDate) >= today).slice(0, 4);
   const latest = RELEASES[0];
+  // Compact total views ("9M", "12M"…) for the marquee — derived from
+  // data/videos.json so the nightly YouTube sync keeps it fresh.
+  const totalViewsCompact = new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    maximumFractionDigits: 0,
+  }).format(VIDEOS_TOTAL_VIEWS);
 
   return (
     <>
@@ -86,7 +92,7 @@ export default async function Home({
           "LAPSUS",
           "PELO DE FOCA",
           "DISCO DE ORO",
-          "+800K",
+          `${totalViewsCompact} EN YOUTUBE`,
           "7× LA RIVIERA",
           "TOUR 2026",
           "LAPSUS",
