@@ -168,20 +168,41 @@ export default async function Home({
         </div>
         <ul className="divide-y divide-[color:var(--border)]">
           {upcoming.length ? (
-            upcoming.map((g) => (
-              <li
-                key={g.rawDate + g.venue}
-                className="grid grid-cols-[1fr_auto] md:grid-cols-[140px_1fr_auto] items-center gap-4 py-5 group"
-              >
+            upcoming.map((g) => {
+              const cta = g.freeEntry ? d.tour.freeEntry : d.tour.tickets;
+              const inner = (
+                <>
                 <span className="font-mono text-sm text-white/70 md:text-base">{g.date}</span>
                 <span className="display text-2xl md:text-3xl group-hover:text-[color:var(--accent)] transition-colors col-span-2 md:col-span-1">
                   {g.venue}
                 </span>
                 <span className="text-xs md:text-sm uppercase tracking-wider text-white/50 group-hover:text-white">
-                  {g.freeEntry ? d.tour.freeEntry : d.tour.tickets} →
+                    {cta} →
                 </span>
+                </>
+              );
+              const rowClass =
+                "grid grid-cols-[1fr_auto] md:grid-cols-[140px_1fr_auto] items-center gap-4 py-5 group";
+              return (
+                <li key={g.rawDate + g.venue}>
+                  {g.ticketUrl ? (
+                    <a
+                      href={g.ticketUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={rowClass}
+                      aria-label={`${cta}: ${g.venue} — ${g.date}`}
+                    >
+                      {inner}
+                    </a>
+                  ) : (
+                    <Link href={`/${l}/tour`} className={rowClass}>
+                      {inner}
+                    </Link>
+                  )}
               </li>
-            ))
+              );
+            })
           ) : (
             <li className="py-6 text-white/60">{d.tour.noUpcoming}</li>
           )}
