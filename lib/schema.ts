@@ -180,6 +180,22 @@ export function upcomingToursSchema(): object {
   };
 }
 
+/**
+ * Marks regions of the page that voice assistants (Siri, Google Assistant,
+ * Alexa) should read aloud. The selectors point at DOM elements via CSS
+ * class — keep the class name in sync between the page and the schema.
+ */
+export function speakableSchema(cssSelectors: string[]): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: cssSelectors,
+    },
+  };
+}
+
 export function faqPageSchema(
   items: { q: string; a: string }[],
 ): object {

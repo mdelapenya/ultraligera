@@ -3,7 +3,11 @@ import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
 import { GIGS, RELEASES, SOCIAL } from "@/lib/content";
 import { buildAlternates } from "@/lib/seo";
-import { musicGroupSchema, websiteSchema } from "@/lib/schema";
+import {
+  musicGroupSchema,
+  speakableSchema,
+  websiteSchema,
+} from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
 import { Marquee } from "@/components/Marquee";
 
@@ -39,6 +43,7 @@ export default async function Home({
     <>
       <JsonLd data={websiteSchema()} />
       <JsonLd data={musicGroupSchema()} />
+      <JsonLd data={speakableSchema([".speakable-summary"])} />
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-16 md:pt-32 md:pb-24">
@@ -51,7 +56,7 @@ export default async function Home({
           <h1 className="display text-[18vw] md:text-[12rem] leading-[0.85] tracking-tight">
             Ultra<span className="text-[color:var(--accent)]">ligera</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-lg md:text-xl text-white/80 leading-relaxed">
+          <p className="speakable-summary mt-8 max-w-2xl text-lg md:text-xl text-white/80 leading-relaxed">
             {d.home.tagline}
           </p>
           <div className="mt-10 flex flex-wrap gap-3">

@@ -6,6 +6,7 @@ import {
   breadcrumbsSchema,
   faqPageSchema,
   musicGroupSchema,
+  speakableSchema,
 } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -38,6 +39,7 @@ export default async function BandPage({
     <>
       <JsonLd data={musicGroupSchema()} />
       <JsonLd data={faqPageSchema(d.band.faqItems)} />
+      <JsonLd data={speakableSchema([".speakable-summary"])} />
       <JsonLd
         data={breadcrumbsSchema(l, [
           { name: BAND.name, path: "" },
@@ -96,7 +98,9 @@ export default async function BandPage({
         <h2 className="display text-3xl md:text-5xl">{d.band.bioTitle}</h2>
         <div className="space-y-5 text-lg leading-relaxed text-white/85 max-w-3xl">
           {d.band.bio.map((p, i) => (
-            <p key={i}>{p}</p>
+            <p key={i} className={i === 0 ? "speakable-summary" : undefined}>
+              {p}
+            </p>
           ))}
         </div>
       </section>
