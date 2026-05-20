@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
 import { MEMBERS } from "@/lib/content";
+import { buildAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -9,7 +10,12 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return { title: getDict(locale).band.title };
+  const d = getDict(locale);
+  return {
+    title: d.band.title,
+    description: d.descriptions.band,
+    alternates: buildAlternates(locale, "/banda"),
+  };
 }
 
 export default async function BandPage({

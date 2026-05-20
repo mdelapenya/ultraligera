@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
 import { GIGS, type Gig } from "@/lib/content";
+import { buildAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -9,7 +10,12 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return { title: getDict(locale).tour.title };
+  const d = getDict(locale);
+  return {
+    title: d.tour.title,
+    description: d.descriptions.tour,
+    alternates: buildAlternates(locale, "/tour"),
+  };
 }
 
 export default async function TourPage({

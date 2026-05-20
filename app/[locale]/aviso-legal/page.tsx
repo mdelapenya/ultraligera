@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
 import { SITE } from "@/lib/content";
+import { buildAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -9,7 +10,12 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return { title: getDict(locale).footer.legal };
+  const d = getDict(locale);
+  return {
+    title: d.footer.legal,
+    description: d.descriptions.legal,
+    alternates: buildAlternates(locale, "/aviso-legal"),
+  };
 }
 
 export default async function LegalPage({

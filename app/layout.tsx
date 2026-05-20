@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Bebas_Neue, JetBrains_Mono } from "next/font/google";
+import { headers } from "next/headers";
 import { Analytics } from "@vercel/analytics/next";
 import { COLORS, themeStyleBlock } from "@/lib/theme";
+import { SITE_URL } from "@/lib/seo";
+import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n";
 import "./globals.css";
 
 const inter = Inter({
@@ -28,6 +31,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Ultraligera — Fan site",
     template: "%s · Ultraligera (fan site)",
@@ -50,12 +54,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  // Derive the active locale from the request path. Root layouts can't read
+  // route params, so middleware.ts forwards the pathname as an x-pathname
+  // header. Falls back to DEFAULT_LOCALE when missing (e.g. local dev with
+  // middleware disabled, or static prerendering of routes without locale).
+  const h = await headers();
+  const pathname = h.get("x-pathname") ?? "";
+  const localeSegment = pathname.split("/")[1] ?? "";
+  const lang = isLocale(localeSegment) ? localeSegment : DEFAULT_LOCALE;
+
   return (
     <html
-      lang="es"
+      lang={lang}
       className={`${inter.variable} ${display.variable} ${mono.variable} h-full antialiased`}
     >
       <head>

@@ -2,7 +2,22 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
 import { GIGS, RELEASES, SOCIAL } from "@/lib/content";
+import { buildAlternates } from "@/lib/seo";
 import { Marquee } from "@/components/Marquee";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const d = getDict(locale);
+  return {
+    description: d.descriptions.home,
+    alternates: buildAlternates(locale, ""),
+  };
+}
 
 export default async function Home({
   params,

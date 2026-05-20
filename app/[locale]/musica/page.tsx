@@ -7,6 +7,7 @@ import {
   type Release,
   type ReleaseKind,
 } from "@/lib/content";
+import { buildAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -15,7 +16,12 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return { title: getDict(locale).music.title };
+  const d = getDict(locale);
+  return {
+    title: d.music.title,
+    description: d.descriptions.music,
+    alternates: buildAlternates(locale, "/musica"),
+  };
 }
 
 export default async function MusicPage({

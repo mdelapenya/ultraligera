@@ -8,6 +8,7 @@ import {
   VIDEOS_HISTORY,
   FEATURED_VIDEOS,
 } from "@/lib/content";
+import { buildAlternates } from "@/lib/seo";
 import { VideoGrid } from "@/components/VideoGrid";
 
 export async function generateMetadata({
@@ -17,7 +18,12 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return { title: getDict(locale).media.title };
+  const d = getDict(locale);
+  return {
+    title: d.media.title,
+    description: d.descriptions.media,
+    alternates: buildAlternates(locale, "/media"),
+  };
 }
 
 export default async function MediaPage({

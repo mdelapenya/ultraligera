@@ -135,6 +135,15 @@ type Dict = {
     groupReleases: string;
     groupMembers: string;
   };
+  /** SEO descriptions, one per page. ~150-160 chars each. */
+  descriptions: {
+    home: string;
+    band: string;
+    music: string;
+    tour: string;
+    media: string;
+    legal: string;
+  };
 };
 
 const es: Dict = {
@@ -275,6 +284,14 @@ const es: Dict = {
     groupReleases: "Música",
     groupMembers: "Banda",
   },
+  descriptions: {
+    home: "Sitio de fans no oficial sobre Ultraligera: gira, discos y enlaces oficiales en un solo sitio.",
+    band: "Conoce a la formación de Ultraligera —banda madrileña formada en 2021— y su biografía. Sitio de fans no oficial.",
+    music: "Discografía de Ultraligera: EP Europa, álbum Pelo de foca y el próximo Lapsus (2026). Enlaces a Apple Music, Spotify y YouTube.",
+    tour: "Fechas confirmadas de la gira de Ultraligera 2026 por salas y festivales de España. Información recopilada de fuentes públicas.",
+    media: "Vídeos y Shorts del canal oficial de Ultraligera en YouTube, con estadísticas día a día y top de vídeos más vistos.",
+    legal: "Aviso legal del sitio de fans no oficial sobre Ultraligera: naturaleza del proyecto, datos personales, marcas y retirada de contenido.",
+  },
 };
 
 const en: Dict = {
@@ -413,6 +430,14 @@ const en: Dict = {
     groupGigs: "Tour",
     groupReleases: "Music",
     groupMembers: "Band",
+  },
+  descriptions: {
+    home: "Unofficial fan site about Ultraligera: tour dates, discography and official links in one place.",
+    band: "Meet the lineup of Ultraligera —a Madrid-based band formed in 2021— and their biography. Unofficial fan site.",
+    music: "Ultraligera discography: the Europa EP, the Pelo de foca album and the upcoming Lapsus (2026). Links to Apple Music, Spotify and YouTube.",
+    tour: "Confirmed tour dates for Ultraligera 2026 across Spanish clubs and festivals. Information gathered from public sources.",
+    media: "Videos and Shorts from Ultraligera's official YouTube channel, with day-by-day stats and the most-watched picks.",
+    legal: "Legal notice for the unofficial fan site about Ultraligera: nature of the project, personal data, trademarks and content takedown.",
   },
 };
 
