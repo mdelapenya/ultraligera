@@ -58,7 +58,7 @@ export default function OpengraphImage() {
         </div>
         <div
           style={{
-            fontSize: 240,
+            fontSize: 180,
             color: COLORS.foreground,
             lineHeight: 0.85,
             letterSpacing: "-0.03em",
