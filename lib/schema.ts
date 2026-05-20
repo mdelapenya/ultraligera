@@ -180,6 +180,23 @@ export function upcomingToursSchema(): object {
   };
 }
 
+export function faqPageSchema(
+  items: { q: string; a: string }[],
+): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((it) => ({
+      "@type": "Question",
+      name: it.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: it.a,
+      },
+    })),
+  };
+}
+
 export function breadcrumbsSchema(
   locale: Locale,
   trail: { name: string; path: string }[],

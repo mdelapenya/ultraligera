@@ -2,7 +2,11 @@ import { notFound } from "next/navigation";
 import { isLocale, getDict, type Locale } from "@/lib/i18n";
 import { BAND, MEMBERS } from "@/lib/content";
 import { buildAlternates } from "@/lib/seo";
-import { breadcrumbsSchema, musicGroupSchema } from "@/lib/schema";
+import {
+  breadcrumbsSchema,
+  faqPageSchema,
+  musicGroupSchema,
+} from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
 
 export async function generateMetadata({
@@ -33,6 +37,7 @@ export default async function BandPage({
   return (
     <>
       <JsonLd data={musicGroupSchema()} />
+      <JsonLd data={faqPageSchema(d.band.faqItems)} />
       <JsonLd
         data={breadcrumbsSchema(l, [
           { name: BAND.name, path: "" },
@@ -119,6 +124,22 @@ export default async function BandPage({
             </a>
           </p>
         </div>
+      </section>
+
+      {/* FAQ — surfaces answers to common queries for featured snippets and
+          AI engines. Pairs with the FAQPage JSON-LD above. */}
+      <section className="grid md:grid-cols-[260px_1fr] gap-10 md:gap-16 mt-20 md:mt-28">
+        <h2 className="display text-3xl md:text-5xl">{d.band.faqTitle}</h2>
+        <dl className="space-y-6 max-w-3xl">
+          {d.band.faqItems.map((item) => (
+            <div key={item.q} className="border-b border-[color:var(--border)] pb-6">
+              <dt className="display text-xl md:text-2xl text-white mb-2">
+                {item.q}
+              </dt>
+              <dd className="text-white/80 leading-relaxed">{item.a}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
       </article>
     </>

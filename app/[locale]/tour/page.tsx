@@ -56,6 +56,9 @@ export default async function TourPage({
           {d.tour.title}
         </h1>
         <p className="mt-6 text-lg md:text-xl text-white/75 max-w-2xl">{d.tour.subtitle}</p>
+        <p className="mt-3 text-xs font-mono uppercase tracking-widest text-white/40">
+          {d.tour.dataFreshness}
+        </p>
       </header>
 
       <section className="mb-20">

@@ -42,6 +42,8 @@ type Dict = {
     bioTitle: string;
     bio: string[];
     liveLineupNote: string;
+    faqTitle: string;
+    faqItems: { q: string; a: string }[];
   };
   music: {
     title: string;
@@ -61,6 +63,7 @@ type Dict = {
     upcoming: string;
     past: string;
     noUpcoming: string;
+    dataFreshness: string;
   };
   media: {
     title: string;
@@ -189,11 +192,30 @@ const es: Dict = {
     membersTitle: "Formación",
     bioTitle: "Biografía",
     bio: [
-      "Ultraligera nació en 2021 y ha crecido al margen de las multinacionales. En pocos años ha reunido a cientos de miles de oyentes en plataformas de streaming.",
+      "Ultraligera es una banda madrileña de indie/post-punk formada en 2021. Ha crecido al margen de las multinacionales y en pocos años ha reunido a cientos de miles de oyentes en plataformas de streaming.",
       "Tras su EP de debut Europa (2023), el disco que les disparó fue Pelo de foca (2025): agotaron entradas en cada parada de su gira por salas, con varias noches casi seguidas en La Riviera de Madrid.",
       "Su segundo álbum, Lapsus (2026), está en camino. La gira de presentación los lleva durante todo el verano y otoño por los grandes festivales del país.",
     ],
     liveLineupNote: "En directo se les suma:",
+    faqTitle: "Preguntas frecuentes",
+    faqItems: [
+      {
+        q: "¿Cuándo se formó Ultraligera?",
+        a: "Ultraligera se formó en Madrid en 2021.",
+      },
+      {
+        q: "¿De dónde es Ultraligera?",
+        a: "Ultraligera es una banda madrileña de indie/post-punk.",
+      },
+      {
+        q: "¿Quiénes son los miembros de Ultraligera?",
+        a: "La formación de estudio es Gisme (voz), Coque Fernández (guitarra), Santi Urruela (bajo) y Martín Aparicio (batería). En directo se les suma Mario en guitarra rítmica.",
+      },
+      {
+        q: "¿Cuál es el último disco de Ultraligera?",
+        a: "Su segundo álbum, Lapsus, llega en 2026. Antes publicaron Pelo de foca (2025), con el que recibieron su primer disco de oro por «Matanza en el Hotel».",
+      },
+    ],
   },
   music: {
     title: "Música",
@@ -215,6 +237,8 @@ const es: Dict = {
     upcoming: "Próximos",
     past: "Pasados",
     noUpcoming: "Aún no hay fechas anunciadas.",
+    dataFreshness:
+      "Datos sincronizados cada noche desde la web oficial de la banda.",
   },
   media: {
     title: "Media",
@@ -343,11 +367,30 @@ const en: Dict = {
     membersTitle: "Line-up",
     bioTitle: "Biography",
     bio: [
-      "Ultraligera started in 2021 and has grown outside the major-label system. In just a few years they've gathered hundreds of thousands of listeners across streaming platforms.",
+      "Ultraligera is a Madrid-based indie/post-punk band formed in 2021. They have grown outside the major-label system and in just a few years gathered hundreds of thousands of listeners across streaming platforms.",
       "Their debut EP Europa (2023) was the opener, but the record that pushed them forward was Pelo de foca (2025): every stop on their Spanish club tour sold out, with several near-consecutive nights at La Riviera in Madrid.",
       "Their second album, Lapsus (2026), is on the way. The accompanying tour runs through summer and autumn at the country's main festivals.",
     ],
     liveLineupNote: "Joining them live:",
+    faqTitle: "Frequently asked questions",
+    faqItems: [
+      {
+        q: "When did Ultraligera form?",
+        a: "Ultraligera formed in Madrid in 2021.",
+      },
+      {
+        q: "Where is Ultraligera from?",
+        a: "Ultraligera is a Madrid-based indie/post-punk band.",
+      },
+      {
+        q: "Who are the members of Ultraligera?",
+        a: "The studio lineup is Gisme (vocals), Coque Fernández (guitar), Santi Urruela (bass) and Martín Aparicio (drums). Mario joins on rhythm guitar for live shows.",
+      },
+      {
+        q: "What's the latest album by Ultraligera?",
+        a: "Their second album, Lapsus, is due in 2026. Their previous album was Pelo de foca (2025), which earned them their first gold record for «Matanza en el Hotel».",
+      },
+    ],
   },
   music: {
     title: "Music",
@@ -369,6 +412,7 @@ const en: Dict = {
     upcoming: "Upcoming",
     past: "Past",
     noUpcoming: "No dates announced yet.",
+    dataFreshness: "Data synced nightly from the band's official site.",
   },
   media: {
     title: "Media",
