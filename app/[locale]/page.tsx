@@ -172,13 +172,13 @@ export default async function Home({
               const cta = g.freeEntry ? d.tour.freeEntry : d.tour.tickets;
               const inner = (
                 <>
-                <span className="font-mono text-sm text-white/70 md:text-base">{g.date}</span>
-                <span className="display text-2xl md:text-3xl group-hover:text-[color:var(--accent)] transition-colors col-span-2 md:col-span-1">
-                  {g.venue}
-                </span>
-                <span className="text-xs md:text-sm uppercase tracking-wider text-white/50 group-hover:text-white">
+                  <span className="font-mono text-sm text-white/70 md:text-base">{g.date}</span>
+                  <span className="display text-2xl md:text-3xl group-hover:text-[color:var(--accent)] transition-colors col-span-2 md:col-span-1">
+                    {g.venue}
+                  </span>
+                  <span className="text-xs md:text-sm uppercase tracking-wider text-white/50 group-hover:text-white">
                     {cta} →
-                </span>
+                  </span>
                 </>
               );
               const rowClass =
@@ -200,7 +200,7 @@ export default async function Home({
                       {inner}
                     </Link>
                   )}
-              </li>
+                </li>
               );
             })
           ) : (

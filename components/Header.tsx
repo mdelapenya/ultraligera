@@ -40,7 +40,7 @@ export function Header({ locale }: Props) {
   };
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-black/60 border-b border-[color:var(--border)]">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#0d0d0d]/80 border-b border-[color:var(--border)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-14 items-center justify-between gap-6">
           <Link

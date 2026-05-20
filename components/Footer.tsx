@@ -17,7 +17,7 @@ export function Footer({ locale }: Props) {
   const d = getDict(locale);
 
   return (
-    <footer className="mt-20 border-t border-[color:var(--border)] bg-black/40">
+    <footer className="mt-20 border-t border-[color:var(--border)] bg-[#0d0d0d]/40">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid gap-10 md:grid-cols-2">
           <div>
