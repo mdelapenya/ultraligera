@@ -58,9 +58,9 @@ export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   // Derive the active locale from the request path. Root layouts can't read
-  // route params, so middleware.ts forwards the pathname as an x-pathname
-  // header. Falls back to DEFAULT_LOCALE when missing (e.g. local dev with
-  // middleware disabled, or static prerendering of routes without locale).
+  // route params, so proxy.ts forwards the pathname as an x-pathname header.
+  // Falls back to DEFAULT_LOCALE when missing (e.g. local dev with proxy
+  // disabled, or static prerendering of routes without locale).
   const h = await headers();
   const pathname = h.get("x-pathname") ?? "";
   const localeSegment = pathname.split("/")[1] ?? "";

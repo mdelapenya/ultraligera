@@ -17,7 +17,11 @@ function pickBubbleCovers(): CoverBubble[] {
   for (const r of RELEASES) {
     if (r.cover && !seen.has(r.cover)) {
       seen.add(r.cover);
-      out.push({ title: r.title, cover: r.cover });
+      // Apple CDN URLs encode the size in the path (`.../600x600bb.jpg`).
+      // Bubbles render at ~300px max on screen, so requesting 300x300
+      // halves the bytes per cover (21 covers × ~30 KB → ~15 KB each).
+      const lighter = r.cover.replace(/\/600x600bb\.jpg$/, "/300x300bb.jpg");
+      out.push({ title: r.title, cover: lighter });
     }
   }
   return out;
