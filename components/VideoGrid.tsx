@@ -7,11 +7,14 @@ import type { FeaturedVideo, Video, VideoHistorySnapshot } from "@/lib/content";
 import { ViewsChart, type ChartSeries } from "@/components/ViewsChart";
 
 type SortKey = "views" | "likes" | "date";
-type TypeKey = "videos" | "shorts" | "trending";
+type TypeKey = "featured" | "videos" | "shorts" | "trending";
 
-const TYPE_KEYS: readonly TypeKey[] = ["videos", "shorts", "trending"];
+const TYPE_KEYS: readonly TypeKey[] = ["featured", "videos", "shorts", "trending"];
 
 const TOP_VIDEO_COLORS = ["#f5b700", "#ef476f", "#06d6a0", "#118ab2", "#c77dff"];
+
+const DEFAULT_ACTIVE_VIDEOS = 5;
+const VISIBLE_CHIPS_DEFAULT = 20;
 
 /** Trim the "Ultraligera - X (Videoclip Oficial)" noise down to just "X". */
 function cleanTrackTitle(title: string): string {
@@ -77,6 +80,9 @@ export function VideoGrid({
     setType(next);
     if (typeof window !== "undefined") {
       window.history.replaceState(null, "", `#${next}`);
+      // history.* doesn't trigger hashchange. Fire one so other components
+      // (e.g. the language switcher in Header) can re-read the hash.
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
     }
   }
 
@@ -115,22 +121,58 @@ export function VideoGrid({
 
   const isShorts = type === "shorts";
   const isTrending = type === "trending";
+  const isFeatured = type === "featured";
+
+  const videosByViews = useMemo(
+    () => [...videos].sort((a, b) => b.viewCount - a.viewCount),
+    [videos],
+  );
+
+  // Stable color slots: deactivating a video leaves its slot empty so the
+  // remaining lines keep their colors. Activating fills the lowest empty slot.
+  const [activeSlots, setActiveSlots] = useState<(string | null)[]>(() =>
+    videosByViews.slice(0, DEFAULT_ACTIVE_VIDEOS).map((v) => v.id),
+  );
+  const [chipsExpanded, setChipsExpanded] = useState(false);
+
+  function toggleVideoSlot(id: string) {
+    setActiveSlots((prev) => {
+      const idx = prev.indexOf(id);
+      if (idx >= 0) {
+        const next = [...prev];
+        next[idx] = null;
+        while (next.length && next[next.length - 1] === null) next.pop();
+        return next;
+      }
+      const emptyAt = prev.indexOf(null);
+      if (emptyAt >= 0) {
+        const next = [...prev];
+        next[emptyAt] = id;
+        return next;
+      }
+      return [...prev, id];
+    });
+  }
 
   const topVideoSeries: ChartSeries[] = useMemo(() => {
-    const topByViews = [...videos]
-      .sort((a, b) => b.viewCount - a.viewCount)
-      .slice(0, 5);
-    return topByViews.map((v, i) => ({
-      name: cleanTrackTitle(v.title),
-      color: TOP_VIDEO_COLORS[i % TOP_VIDEO_COLORS.length],
-      points: history
-        .map((snap) => {
-          const hit = snap.videos.find((x) => x.id === v.id);
-          return hit ? { date: snap.date, value: hit.views } : null;
-        })
-        .filter((p): p is { date: string; value: number } => p !== null),
-    }));
-  }, [videos, history]);
+    const out: ChartSeries[] = [];
+    activeSlots.forEach((id, slotIdx) => {
+      if (!id) return;
+      const v = videos.find((x) => x.id === id);
+      if (!v) return;
+      out.push({
+        name: cleanTrackTitle(v.title),
+        color: TOP_VIDEO_COLORS[slotIdx % TOP_VIDEO_COLORS.length],
+        points: history
+          .map((snap) => {
+            const hit = snap.videos.find((x) => x.id === v.id);
+            return hit ? { date: snap.date, value: hit.views } : null;
+          })
+          .filter((p): p is { date: string; value: number } => p !== null),
+      });
+    });
+    return out;
+  }, [videos, history, activeSlots]);
 
   const channelTotalSeries: ChartSeries[] = useMemo(
     () => [
@@ -276,20 +318,33 @@ export function VideoGrid({
           <p className="text-sm md:text-base text-white/70 max-w-2xl mb-6 md:mb-8">
             {d.media.trendingSubtitle}
           </p>
-          <div className="grid gap-6 md:gap-8 md:grid-cols-2">
+          <div className="flex flex-col gap-8 md:gap-10">
+            <div className="flex flex-col gap-4">
+              <ViewsChart
+                title={d.media.topVideosLabel}
+                subtitle={d.media.topVideosSubtitle}
+                emptyLabel={d.media.notEnoughHistory}
+                locale={locale}
+                series={topVideoSeries}
+                height={320}
+              />
+              <VideoSelector
+                videos={videosByViews}
+                activeSlots={activeSlots}
+                expanded={chipsExpanded}
+                onToggle={toggleVideoSlot}
+                onToggleExpand={() => setChipsExpanded((e) => !e)}
+                moreLabel={d.media.videoSelectorMore}
+                hideLabel={d.media.videoSelectorHide}
+              />
+            </div>
             <ViewsChart
               title={d.media.channelTotalLabel}
               subtitle={d.media.channelTotalSubtitle}
               emptyLabel={d.media.notEnoughHistory}
               locale={locale}
               series={channelTotalSeries}
-            />
-            <ViewsChart
-              title={d.media.topVideosLabel}
-              subtitle={d.media.topVideosSubtitle}
-              emptyLabel={d.media.notEnoughHistory}
-              locale={locale}
-              series={topVideoSeries}
+              height={260}
             />
           </div>
         </div>
@@ -378,6 +433,74 @@ export function VideoGrid({
             </li>
           ))}
         </ul>
+      )}
+    </div>
+  );
+}
+
+function VideoSelector({
+  videos,
+  activeSlots,
+  expanded,
+  onToggle,
+  onToggleExpand,
+  moreLabel,
+  hideLabel,
+}: {
+  videos: Video[];
+  activeSlots: (string | null)[];
+  expanded: boolean;
+  onToggle: (id: string) => void;
+  onToggleExpand: () => void;
+  moreLabel: string;
+  hideLabel: string;
+}) {
+  const visible = expanded ? videos : videos.slice(0, VISIBLE_CHIPS_DEFAULT);
+  const hiddenCount = Math.max(0, videos.length - VISIBLE_CHIPS_DEFAULT);
+
+  return (
+    <div>
+      <ul className="flex flex-wrap gap-2">
+        {visible.map((v) => {
+          const slotIdx = activeSlots.indexOf(v.id);
+          const active = slotIdx >= 0;
+          const color = active
+            ? TOP_VIDEO_COLORS[slotIdx % TOP_VIDEO_COLORS.length]
+            : null;
+          return (
+            <li key={v.id}>
+              <button
+                type="button"
+                onClick={() => onToggle(v.id)}
+                aria-pressed={active}
+                className={`flex items-center gap-2 px-3 py-1.5 text-xs border transition-colors ${
+                  active
+                    ? "text-white"
+                    : "border-white/10 text-white/40 hover:border-white/30 hover:text-white/80"
+                }`}
+                style={active && color ? { borderColor: color } : undefined}
+              >
+                {color && (
+                  <span
+                    aria-hidden
+                    className="inline-block w-2 h-2 rounded-full shrink-0"
+                    style={{ background: color }}
+                  />
+                )}
+                <span>{cleanTrackTitle(v.title)}</span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      {hiddenCount > 0 && (
+        <button
+          type="button"
+          onClick={onToggleExpand}
+          className="mt-3 text-xs font-mono uppercase tracking-widest text-white/45 hover:text-white"
+        >
+          {expanded ? hideLabel : `+ ${hiddenCount} ${moreLabel}`}
+        </button>
       )}
     </div>
   );

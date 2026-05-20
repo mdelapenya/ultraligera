@@ -144,6 +144,10 @@ function ChartSvg({
         .vc-point:hover .vc-tip, .vc-point:focus-within .vc-tip { opacity: 1; }
         .vc-point .vc-dot { transition: r 100ms ease-out; }
         .vc-point:hover .vc-dot { r: 5; }
+        /* Overlapping series on a black background — without blending, the
+           series drawn last hides the ones below. Screen blending mixes the
+           strokes so collisions become visible (blue+green=cyan, etc.). */
+        .vc-line, .vc-dot { mix-blend-mode: screen; }
       `}</style>
       {gridValues.map((gv, i) => {
         const y = yForValue(gv);
@@ -212,7 +216,7 @@ function ChartSvg({
         const dStr = pts.map((p, i) => `${i === 0 ? "M" : "L"}${p.x},${p.y}`).join(" ");
         return (
           <g key={s.name}>
-            <path d={dStr} fill="none" stroke={s.color} strokeWidth={2} />
+            <path className="vc-line" d={dStr} fill="none" stroke={s.color} strokeWidth={2} />
             {pts.map((p, i) => {
               const label = `${nf.format(p.value)} · ${formatDate(p.date, locale)}`;
               return (
