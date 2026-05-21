@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Bebas_Neue, JetBrains_Mono } from "next/font/google";
 import { headers } from "next/headers";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { COLORS, themeStyleBlock } from "@/lib/theme";
 import { SITE_URL } from "@/lib/seo";
 import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n";
@@ -77,6 +78,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col">
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
