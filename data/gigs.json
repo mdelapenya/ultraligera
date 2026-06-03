@@ -1,7 +1,7 @@
 {
   "$schema": "./gigs.schema.json",
   "source": "https://www.ultraligera.com/tour",
-  "syncedAt": "2026-05-19T14:40:36.111Z",
+  "syncedAt": "2026-06-03T08:06:12.383Z",
   "gigs": [
     {
       "rawDate": "2026-05-16",
@@ -100,6 +100,12 @@
       "ticketUrl": "https://www.enterticket.es/eventos/low-festival-2026-torrevieja-479352"
     },
     {
+      "rawDate": "2026-07-31",
+      "date": "31.7.26",
+      "venue": "SonRías Baixas",
+      "ticketUrl": "https://www.sonriasbaixas.info/pages/entradas"
+    },
+    {
       "rawDate": "2026-08-05",
       "date": "5.8.26",
       "venue": "Concert Music Festival",
@@ -143,6 +149,12 @@
       "freeEntry": true
     },
     {
+      "rawDate": "2026-08-30",
+      "date": "30.8.26",
+      "venue": "Festival Cosquín Rock",
+      "ticketUrl": "https://www.edenentradas.ar/event/cosquin-rock-2027-wh"
+    },
+    {
       "rawDate": "2026-09-04",
       "date": "4 – 5.9.26",
       "venue": "Vive Latino",
@@ -182,6 +194,11 @@
       "date": "9.10.26",
       "venue": "ROCK@RENA FESTIVAL",
       "ticketUrl": "https://landing.vivaticket.es/ultraligera/26/pamplona-6911beab/"
+    },
+    {
+      "rawDate": "2026-10-10",
+      "date": "10.10.26",
+      "venue": "Farcama Suena"
     },
     {
       "rawDate": "2026-10-17",
