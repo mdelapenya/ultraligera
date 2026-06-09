@@ -165,41 +165,44 @@ function scoreMatch(url, venue) {
 }
 
 /**
- * Walk gigs and tickets in parallel document order. When the current ticket
- * doesn't share any keyword with the current gig, assume that gig has no
- * ticket button (e.g. tickets not on sale yet) and advance past it.
+ * Match each ticket button to the gig it most likely belongs to.
+ *
+ * Strategy: greedy best-token-score. For every ticket URL we scan all
+ * unassigned gigs and pick the one whose venue name shares the most tokens
+ * with the URL slug. Only assigns when score > 0 — if no gig shares any
+ * token with the URL the ticket is logged as unmatched (needs manual review).
+ *
+ * This is safer than walking in parallel document order because Wix does not
+ * guarantee that ticket buttons appear in the same DOM order as the gig text.
+ * A positional fallback silently produces wrong data when a new gig is
+ * inserted or a URL slug uses a city name instead of the venue name.
  */
 function assignTickets(gigs, tickets) {
   const out = gigs.map((g) => ({ ...g }));
-  let g = 0;
-  let t = 0;
-  while (g < out.length && t < tickets.length) {
-    const score = scoreMatch(tickets[t].url, out[g].venue);
-    if (score > 0) {
-      out[g].ticketUrl = tickets[t].url;
-      if (tickets[t].isFree) out[g].freeEntry = true;
-      g++;
-      t++;
-      continue;
+  const assigned = new Set(); // gig indices already matched
+
+  for (const ticket of tickets) {
+    let bestScore = 0;
+    let bestIdx = -1;
+    for (let i = 0; i < out.length; i++) {
+      if (assigned.has(i)) continue;
+      const s = scoreMatch(ticket.url, out[i].venue);
+      if (s > bestScore) {
+        bestScore = s;
+        bestIdx = i;
+      }
     }
-    // No token overlap. Does this ticket fit the next gig instead?
-    const lookAhead =
-      g + 1 < out.length ? scoreMatch(tickets[t].url, out[g + 1].venue) : 0;
-    if (lookAhead > 0) {
-      // Current gig probably has no button on the page yet. Skip it.
-      g++;
-      continue;
+    if (bestIdx >= 0) {
+      out[bestIdx].ticketUrl = ticket.url;
+      if (ticket.isFree) out[bestIdx].freeEntry = true;
+      assigned.add(bestIdx);
+    } else {
+      // No venue name tokens appear anywhere in this URL. Don't guess —
+      // a wrong URL is worse than a missing one. Flag for manual review.
+      console.warn(
+        `[sync-tour] unmatched ticket (no token overlap with any gig) — needs manual review: ${ticket.url}`,
+      );
     }
-    // Both 0. Trust document order: ticket URL slugs don't always include the
-    // venue name (e.g. a ROCK@RENA ticket lives under a /pamplona path). Log
-    // it as a low-confidence positional match.
-    console.warn(
-      `[sync-tour] positional match (no token overlap) for ${out[g].venue} → ${tickets[t].url}`,
-    );
-    out[g].ticketUrl = tickets[t].url;
-    if (tickets[t].isFree) out[g].freeEntry = true;
-    g++;
-    t++;
   }
   return out;
 }
