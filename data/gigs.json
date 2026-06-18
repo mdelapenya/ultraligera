@@ -1,7 +1,7 @@
 {
   "$schema": "./gigs.schema.json",
   "source": "https://www.ultraligera.com/tour",
-  "syncedAt": "2026-06-17T08:21:43.532Z",
+  "syncedAt": "2026-06-18T07:27:05.855Z",
   "gigs": [
     {
       "rawDate": "2026-05-16",
@@ -62,6 +62,11 @@
       "date": "4.7.26",
       "venue": "Polifonik Sound",
       "ticketUrl": "https://polifoniksound.com/entradas/"
+    },
+    {
+      "rawDate": "2026-07-09",
+      "date": "9.7.26",
+      "venue": "Teruel en Vivo"
     },
     {
       "rawDate": "2026-07-10",
