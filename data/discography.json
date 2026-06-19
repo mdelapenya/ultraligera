@@ -3,8 +3,19 @@
   "artistId": "1588276787",
   "artistName": "Ultraligera",
   "country": "es",
-  "syncedAt": "2026-05-19T16:32:52.535Z",
+  "syncedAt": "2026-06-19T07:30:54.206Z",
   "releases": [
+    {
+      "slug": "alguna-pelicula-single-2026",
+      "title": "ALGUNA PELÍCULA",
+      "year": 2026,
+      "releaseDate": "2026-06-18T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f0/87/61/f0876165-0db5-03cc-9174-9eb66d94c570/1200214120412.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/alguna-pel%C3%ADcula-single/6772109344?uo=4",
+      "trackCount": 1,
+      "appleId": 6772109344
+    },
     {
       "slug": "tu-problema-single-2026",
       "title": "TU PROBLEMA",
