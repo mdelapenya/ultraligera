@@ -1,7 +1,7 @@
 {
   "$schema": "./gigs.schema.json",
   "source": "https://www.ultraligera.com/tour",
-  "syncedAt": "2026-06-18T07:27:05.855Z",
+  "syncedAt": "2026-06-23T06:39:01.729Z",
   "gigs": [
     {
       "rawDate": "2026-05-16",
@@ -215,7 +215,7 @@
       "rawDate": "2026-10-17",
       "date": "17.10.26",
       "venue": "ContemPOPranea",
-      "ticketUrl": "https://contempopranea.com/tickets/"
+      "ticketUrl": "https://contempopranea.com"
     },
     {
       "rawDate": "2026-10-23",
