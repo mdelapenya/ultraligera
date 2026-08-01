@@ -1,7 +1,7 @@
 {
   "$schema": "./gigs.schema.json",
   "source": "https://www.ultraligera.com/tour",
-  "syncedAt": "2026-06-23T06:39:01.729Z",
+  "syncedAt": "2026-08-01T05:45:21.533Z",
   "gigs": [
     {
       "rawDate": "2026-05-16",
@@ -135,6 +135,12 @@
       "ticketUrl": "https://coolturalfest.com/venta-de-abonos/"
     },
     {
+      "rawDate": "2026-08-22",
+      "date": "22.8.26",
+      "venue": "Cooltural Fest",
+      "ticketUrl": "https://coolturalfest.com/venta-de-abonos/"
+    },
+    {
       "rawDate": "2026-08-27",
       "date": "27 – 29.8.26",
       "venue": "Festival Gigante",
@@ -145,6 +151,12 @@
       "date": "28 – 30.8.26",
       "venue": "Festival Cosquín Rock",
       "ticketUrl": "https://www.edenentradas.ar/event/cosquin-rock-2027-wh"
+    },
+    {
+      "rawDate": "2026-08-28",
+      "date": "28.8.26",
+      "venue": "Festival Gigante",
+      "ticketUrl": "https://festivalgigante.com/abonos/"
     },
     {
       "rawDate": "2026-08-29",
@@ -162,6 +174,12 @@
     {
       "rawDate": "2026-09-04",
       "date": "4 – 5.9.26",
+      "venue": "Vive Latino",
+      "ticketUrl": "https://vivelatino.es"
+    },
+    {
+      "rawDate": "2026-09-05",
+      "date": "5.9.26",
       "venue": "Vive Latino",
       "ticketUrl": "https://vivelatino.es"
     },
@@ -189,6 +207,12 @@
       "ticketUrl": "https://www.caudalfest.es/entradas/"
     },
     {
+      "rawDate": "2026-09-20",
+      "date": "20.9.26",
+      "venue": "Vetusta Fest",
+      "ticketUrl": "https://vetustafest.es"
+    },
+    {
       "rawDate": "2026-09-25",
       "date": "25.9.26",
       "venue": "Sin Frontera",
@@ -212,6 +236,12 @@
       "venue": "Farcama Suena"
     },
     {
+      "rawDate": "2026-10-16",
+      "date": "16.10.26",
+      "venue": "IV Xauen Bull Festival",
+      "ticketUrl": "https://www.elcorteingles.es/entradas/festivales/entradas-iv-xauen-bull-festival-2026-jaen/"
+    },
+    {
       "rawDate": "2026-10-17",
       "date": "17.10.26",
       "venue": "ContemPOPranea",
@@ -222,6 +252,36 @@
       "date": "23.10.26",
       "venue": "Welcome Estrella de Levante",
       "ticketUrl": "https://iboleleproducciones.com/evento/welcome-estrella-de-levante-bienvenida-universitaria-2026/"
+    },
+    {
+      "rawDate": "2026-11-04",
+      "date": "4.11.26",
+      "venue": "Bogotá, Colombia"
+    },
+    {
+      "rawDate": "2026-11-07",
+      "date": "7.11.26",
+      "venue": "Monterrey, México"
+    },
+    {
+      "rawDate": "2026-11-08",
+      "date": "8.11.26",
+      "venue": "Guadalajara, México"
+    },
+    {
+      "rawDate": "2026-11-12",
+      "date": "12.11.26",
+      "venue": "CDMX, México"
+    },
+    {
+      "rawDate": "2026-11-14",
+      "date": "14.11.26",
+      "venue": "Santiago, Chile"
+    },
+    {
+      "rawDate": "2026-11-15",
+      "date": "15.11.26",
+      "venue": "Buenos Aires, Argentina 8"
     }
   ]
 }
