@@ -1,7 +1,7 @@
 {
   "$schema": "./gigs.schema.json",
   "source": "https://www.ultraligera.com/tour",
-  "syncedAt": "2026-08-01T05:45:21.533Z",
+  "syncedAt": "2026-08-20T03:37:35.730Z",
   "gigs": [
     {
       "rawDate": "2026-05-16",
@@ -266,6 +266,16 @@
     {
       "rawDate": "2026-11-08",
       "date": "8.11.26",
+      "venue": "Guadalajara, México"
+    },
+    {
+      "rawDate": "2026-11-08",
+      "date": "8.11.26",
+      "venue": "Monterrey, México"
+    },
+    {
+      "rawDate": "2026-11-11",
+      "date": "11.11.26",
       "venue": "Guadalajara, México"
     },
     {
