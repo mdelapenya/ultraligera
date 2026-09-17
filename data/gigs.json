@@ -1,7 +1,7 @@
 {
   "$schema": "./gigs.schema.json",
   "source": "https://www.ultraligera.com/tour",
-  "syncedAt": "2026-09-16T08:02:06.488Z",
+  "syncedAt": "2026-09-17T08:08:19.585Z",
   "gigs": [
     {
       "rawDate": "2026-05-16",
@@ -236,6 +236,11 @@
       "venue": "Farcama Suena"
     },
     {
+      "rawDate": "2026-10-11",
+      "date": "11.10.26",
+      "venue": "Ah!Tardecer Fest"
+    },
+    {
       "rawDate": "2026-10-16",
       "date": "16.10.26",
       "venue": "IV Xauen Bull Festival",
@@ -252,6 +257,11 @@
       "date": "23.10.26",
       "venue": "Welcome Estrella de Levante",
       "ticketUrl": "https://iboleleproducciones.com/evento/welcome-estrella-de-levante-bienvenida-universitaria-2026/"
+    },
+    {
+      "rawDate": "2026-10-24",
+      "date": "24.10.26",
+      "venue": "Mármol&Music Fest"
     },
     {
       "rawDate": "2026-11-04",
