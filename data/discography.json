@@ -3,8 +3,19 @@
   "artistId": "1588276787",
   "artistName": "Ultraligera",
   "country": "es",
-  "syncedAt": "2026-06-19T07:30:54.206Z",
+  "syncedAt": "2026-09-25T09:15:52.148Z",
   "releases": [
+    {
+      "slug": "que-le-vaya-bien-single-2026",
+      "title": "QUE LE VAYA BIEN",
+      "year": 2026,
+      "releaseDate": "2026-09-24T07:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/6d/15/51/6d1551f1-3b4a-e302-0c08-aedc5f3f3bc8/1200220081028.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/que-le-vaya-bien-single/6811035649?uo=4",
+      "trackCount": 1,
+      "appleId": 6811035649
+    },
     {
       "slug": "alguna-pelicula-single-2026",
       "title": "ALGUNA PELÍCULA",
