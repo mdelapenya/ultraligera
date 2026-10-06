@@ -2,7 +2,45 @@ name: CI
 
 on:
   push:
+    paths:
+      - "**/*.[jt]s"
+      - "**/*.[jt]sx"
+      - "**/*.[cm][jt]s"
+      - "**/*.css"
+      - "**/*.scss"
+      - "**/*.sass"
+      - "**/package.json"
+      - "**/package-lock.json"
+      - "**/tsconfig*.json"
+      - "pnpm-lock.yaml"
+      - "yarn.lock"
+      - "bun.lock"
+      - "bun.lockb"
+      - ".npmrc"
+      - ".nvmrc"
+      - ".node-version"
+      - "public/**"
+      - ".github/workflows/ci.yml"
   pull_request:
+    paths:
+      - "**/*.[jt]s"
+      - "**/*.[jt]sx"
+      - "**/*.[cm][jt]s"
+      - "**/*.css"
+      - "**/*.scss"
+      - "**/*.sass"
+      - "**/package.json"
+      - "**/package-lock.json"
+      - "**/tsconfig*.json"
+      - "pnpm-lock.yaml"
+      - "yarn.lock"
+      - "bun.lock"
+      - "bun.lockb"
+      - ".npmrc"
+      - ".nvmrc"
+      - ".node-version"
+      - "public/**"
+      - ".github/workflows/ci.yml"
   workflow_dispatch:
 
 permissions:

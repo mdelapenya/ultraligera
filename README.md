@@ -67,8 +67,13 @@ npm run lint
 
 ## Integración continua
 
-El workflow `CI` se ejecuta en cada push y pull request, y también admite
-ejecución manual. Usa Node.js 24, instala las dependencias con `npm ci` y
+El workflow `CI` se ejecuta en pushes y pull requests que cambian código
+JavaScript/TypeScript, estilos, dependencias, configuración de Node.js/TypeScript,
+archivos de `public/` o el propio workflow. Los cambios exclusivos en `data/`
+o documentación no lo disparan; también admite ejecución manual sin filtros.
+Si `CI` es un check obligatorio, los filtros de rutas pueden dejar ese check
+pendiente en pull requests excluidos.
+Usa Node.js 24, instala las dependencias con `npm ci` y
 ejecuta lint, tests (si existe el script `test` en `package.json`) y el build
 de producción. Actualmente no hay tests configurados. Las acciones están
 fijadas al SHA de su última release al añadir el workflow.
