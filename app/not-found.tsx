@@ -1,3 +1,4 @@
+import { randomInt } from "node:crypto";
 import Link from "next/link";
 import { headers } from "next/headers";
 import { DEFAULT_LOCALE, getDict, isLocale, type Locale } from "@/lib/i18n";
@@ -41,7 +42,7 @@ export default async function NotFound() {
   const covers = pickBubbleCovers();
   // Fresh shuffle on every 404 render. The page already opts out of static
   // optimization via the headers() call above, so this runs per request.
-  const seed = Math.floor(Math.random() * 1_000_000);
+  const seed = randomInt(1_000_000);
 
   return (
     <>

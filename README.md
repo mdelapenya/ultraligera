@@ -49,6 +49,7 @@ scripts/
   sync-youtube.mjs         # YouTube Data API → views, likes, duración
   sync-discography.mjs     # iTunes Search API → discografía + carátulas
 .github/workflows/
+  ci.yml                   # push/PR → lint, tests (si existen) y build
   sync-tour.yml            # cron 03:00 UTC → commit directo si hay fechas nuevas
   sync-youtube.yml         # cron 03:30 UTC → commit directo (requiere API key)
   sync-discography.yml     # cron 04:00 UTC → commit directo (API pública)
@@ -63,6 +64,21 @@ npm run build        # build de producción
 npm run start        # servir el build
 npm run lint
 ```
+
+## Integración continua
+
+El workflow `CI` se ejecuta en cada push y pull request. Usa `dorny/paths-filter`
+para omitir los pasos de Node.js cuando los cambios afectan únicamente a `data/`
+o archivos Markdown (`*.md`); cualquier otro archivo cambiado activa esos pasos,
+sin mantener una lista de rutas de código. En pushes compara con el commit
+anterior al push; en pull requests, con la rama base.
+El check finaliza correctamente incluso si los pasos se omiten, sin quedar
+pendiente por filtros del trigger. La ejecución manual siempre ejecuta todos
+los pasos de Node.js.
+Usa Node.js 24, instala las dependencias con `npm ci` y
+ejecuta lint, tests (si existe el script `test` en `package.json`) y el build
+de producción. Actualmente no hay tests configurados. Las acciones están
+fijadas al SHA de su última release al añadir el workflow.
 
 ## Sincronización automática de la gira
 
