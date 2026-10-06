@@ -67,12 +67,14 @@ npm run lint
 
 ## Integración continua
 
-El workflow `CI` se ejecuta en pushes y pull requests que cambian código
-JavaScript/TypeScript, estilos, dependencias, configuración de Node.js/TypeScript,
-archivos de `public/` o el propio workflow. Los cambios exclusivos en `data/`
-o documentación no lo disparan; también admite ejecución manual sin filtros.
-Si `CI` es un check obligatorio, los filtros de rutas pueden dejar ese check
-pendiente en pull requests excluidos.
+El workflow `CI` se ejecuta en cada push y pull request. Usa `dorny/paths-filter`
+para omitir los pasos de Node.js cuando los cambios afectan únicamente a `data/`
+o archivos Markdown (`*.md`); cualquier otro archivo cambiado activa esos pasos,
+sin mantener una lista de rutas de código. En pushes compara con el commit
+anterior al push; en pull requests, con la rama base.
+El check finaliza correctamente incluso si los pasos se omiten, sin quedar
+pendiente por filtros del trigger. La ejecución manual siempre ejecuta todos
+los pasos de Node.js.
 Usa Node.js 24, instala las dependencias con `npm ci` y
 ejecuta lint, tests (si existe el script `test` en `package.json`) y el build
 de producción. Actualmente no hay tests configurados. Las acciones están
