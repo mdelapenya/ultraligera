@@ -2,13 +2,26 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import type { Locale } from "@/lib/i18n";
 import { getDict } from "@/lib/i18n";
 import { NAV, SOCIAL } from "@/lib/content";
 import { SearchTrigger } from "./Search";
 
 type Props = { locale: Locale };
+
+function subscribeToHashChange(onChange: () => void) {
+  window.addEventListener("hashchange", onChange);
+  return () => window.removeEventListener("hashchange", onChange);
+}
+
+function getHashSnapshot() {
+  return window.location.hash;
+}
+
+function getServerHashSnapshot() {
+  return "";
+}
 
 export function Header({ locale }: Props) {
   const d = getDict(locale);
@@ -23,14 +36,12 @@ export function Header({ locale }: Props) {
   //   1. Within a page (tab click → replaceState). VideoGrid dispatches a
   //      synthetic hashchange for these; we listen.
   //   2. Route change (Next.js Link → pushState). pushState doesn't fire
-  //      hashchange, so we re-read on every pathname change instead.
-  const [hash, setHash] = useState("");
-  useEffect(() => {
-    setHash(window.location.hash);
-    const sync = () => setHash(window.location.hash);
-    window.addEventListener("hashchange", sync);
-    return () => window.removeEventListener("hashchange", sync);
-  }, [pathname]);
+  //      hashchange, so usePathname triggers a render that re-reads the snapshot.
+  const hash = useSyncExternalStore(
+    subscribeToHashChange,
+    getHashSnapshot,
+    getServerHashSnapshot,
+  );
 
   const otherHref = pathname.replace(/^\/(es|en)/, `/${otherLocale}`) + hash;
 

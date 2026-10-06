@@ -89,7 +89,8 @@ export function CoverBubbles({
 }) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const layouts = covers.map((_, i) => generateLayout(i, seed));
