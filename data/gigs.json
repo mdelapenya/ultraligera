@@ -1,7 +1,7 @@
 {
   "$schema": "./gigs.schema.json",
   "source": "https://www.ultraligera.com/tour",
-  "syncedAt": "2026-09-17T08:08:19.585Z",
+  "syncedAt": "2026-10-12T09:57:59.179Z",
   "gigs": [
     {
       "rawDate": "2026-05-16",
@@ -261,7 +261,8 @@
     {
       "rawDate": "2026-10-24",
       "date": "24.10.26",
-      "venue": "Mármol&Music Fest"
+      "venue": "Mármol&Music Fest",
+      "ticketUrl": "https://turismoalmanzora.com/event-pro/marmol-music-fest-macael-2026/"
     },
     {
       "rawDate": "2026-11-04",
