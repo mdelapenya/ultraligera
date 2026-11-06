@@ -1,7 +1,7 @@
 {
   "$schema": "./gigs.schema.json",
   "source": "https://www.ultraligera.com/tour",
-  "syncedAt": "2026-10-12T09:57:59.179Z",
+  "syncedAt": "2026-11-06T10:05:16.514Z",
   "gigs": [
     {
       "rawDate": "2026-05-16",
@@ -310,6 +310,16 @@
       "rawDate": "2026-11-15",
       "date": "15.11.26",
       "venue": "Buenos Aires, Argentina 8"
+    },
+    {
+      "rawDate": "2026-11-15",
+      "date": "15.11.26",
+      "venue": "Buenos Aires, Argentina"
+    },
+    {
+      "rawDate": "2027-09-09",
+      "date": "09.09.27",
+      "venue": "Madrid, Movistar Arena"
     }
   ]
 }
