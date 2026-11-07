@@ -3,8 +3,19 @@
   "artistId": "1588276787",
   "artistName": "Ultraligera",
   "country": "es",
-  "syncedAt": "2026-09-25T09:15:52.148Z",
+  "syncedAt": "2026-11-07T10:49:53.575Z",
   "releases": [
+    {
+      "slug": "mosquito-single-2026",
+      "title": "MOSQUITO",
+      "year": 2026,
+      "releaseDate": "2026-11-05T08:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/65/11/d6/6511d69c-7203-6361-c273-2553102833a2/1200220128310.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/mosquito-single/6819602699?uo=4",
+      "trackCount": 1,
+      "appleId": 6819602699
+    },
     {
       "slug": "que-le-vaya-bien-single-2026",
       "title": "QUE LE VAYA BIEN",
