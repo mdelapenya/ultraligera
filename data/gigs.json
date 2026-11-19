@@ -1,7 +1,7 @@
 {
   "$schema": "./gigs.schema.json",
   "source": "https://www.ultraligera.com/tour",
-  "syncedAt": "2026-11-13T10:17:32.592Z",
+  "syncedAt": "2026-11-19T10:53:49.604Z",
   "gigs": [
     {
       "rawDate": "2026-05-16",
@@ -330,6 +330,11 @@
       "rawDate": "2027-09-10",
       "date": "10.09.27",
       "venue": "Madrid, Movistar Arena"
+    },
+    {
+      "rawDate": "2027-09-10",
+      "date": "10.09.27",
+      "venue": "Madrid, Movistar Arena - SOLD OUT - - SOLD OUT"
     }
   ]
 }
