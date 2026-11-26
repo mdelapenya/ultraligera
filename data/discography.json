@@ -3,8 +3,19 @@
   "artistId": "1588276787",
   "artistName": "Ultraligera",
   "country": "es",
-  "syncedAt": "2026-11-07T10:49:53.575Z",
+  "syncedAt": "2026-11-26T13:26:56.559Z",
   "releases": [
+    {
+      "slug": "yugular-single-2026",
+      "title": "YUGULAR",
+      "year": 2026,
+      "releaseDate": "2026-11-26T08:00:00Z",
+      "kind": "single",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ff/6a/93/ff6a930a-c755-5d4f-c4ca-2224fae3f42e/1200220540600.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/yugular-single/6838433335?uo=4",
+      "trackCount": 1,
+      "appleId": 6838433335
+    },
     {
       "slug": "mosquito-single-2026",
       "title": "MOSQUITO",
