@@ -3,8 +3,19 @@
   "artistId": "1588276787",
   "artistName": "Ultraligera",
   "country": "es",
-  "syncedAt": "2026-11-26T13:26:56.559Z",
+  "syncedAt": "2026-11-27T13:23:16.625Z",
   "releases": [
+    {
+      "slug": "lapsus",
+      "title": "LAPSUS",
+      "year": 2026,
+      "releaseDate": "2026-11-26T08:00:00Z",
+      "kind": "album",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/2a/1d/1b/2a1d1b93-f591-7a68-ab5e-55dbb4fedecb/1200214973834.jpg/600x600bb.jpg",
+      "appleMusicUrl": "https://music.apple.com/es/album/lapsus/6812744463?uo=4",
+      "trackCount": 12,
+      "appleId": 6812744463
+    },
     {
       "slug": "yugular-single-2026",
       "title": "YUGULAR",
